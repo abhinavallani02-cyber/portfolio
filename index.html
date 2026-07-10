@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Abhinav Allani — AI &amp; ML Builder</title>
+<meta name="description" content="Abhinav Allani — high school AI/ML builder. Founder of Choose &amp; Rise, an educational platform for college and career exploration. Machine learning, computer vision, and web development projects." />
+<link rel="canonical" href="https://abhinavallani.pages.dev/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Abhinav Allani — AI &amp; ML Builder" />
+<meta property="og:description" content="Founder of Choose &amp; Rise. Building machine learning tools that solve real problems." />
+<meta property="og:url" content="https://abhinavallani.pages.dev/" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230C0C0C'/><text y='72' x='50' text-anchor='middle' font-size='62' font-family='sans-serif' font-weight='900' fill='%23BBCCD7'>A</text></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --bg:#0C0C0C;
+  --ink:#D7E2EA;
+  --ink-dim:rgba(215,226,234,.62);
+  --line:rgba(215,226,234,.16);
+  --paper:#FFFFFF;
+  --grad-a:#646973;
+  --grad-b:#BBCCD7;
+  --accent:#B600A8;
+  --accent-2:#7621B0;
+  --accent-3:#BE4C00;
+  --r-lg:clamp(28px,4vw,60px);
+  --pad:clamp(20px,4vw,40px);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+html,body{background:var(--bg)}
+body{
+  font-family:'Kanit',system-ui,sans-serif;
+  color:var(--ink);
+  overflow-x:clip;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+
+:focus-visible{
+  outline:2px solid var(--grad-b);
+  outline-offset:3px;
+  border-radius:4px;
+}
+
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:999;
+  background:var(--ink);color:var(--bg);padding:12px 20px;font-weight:600;
+}
+.skip:focus{left:12px;top:12px}
+
+.sr-only{
+  position:absolute;width:1px;height:1px;
+  padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
+
+/* ── Gradient display type ───────────────────────────── */
+.hero-heading{
+  background:linear-gradient(180deg,var(--grad-a) 0%,var(--grad-b) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:-.03em;
+  line-height:.85;
+}
+
+/* ── Scroll reveal ───────────────────────────────────── */
+.reveal{
+  opacity:0;
+  transform:translate3d(var(--rx,0),var(--ry,30px),0);
+  transition:opacity .7s cubic-bezier(.25,.1,.25,1),transform .7s cubic-bezier(.25,.1,.25,1);
+  transition-delay:var(--d,0s);
+  will-change:transform,opacity;
+}
+.reveal.in{opacity:1;transform:translate3d(0,0,0)}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+}
+
+/* ── Buttons ─────────────────────────────────────────── */
+.btn-contact{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  border-radius:999px;
+  padding:clamp(12px,1.4vw,16px) clamp(30px,3.4vw,48px);
+  font-size:clamp(.75rem,1vw,1rem);
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  color:#fff;
+  background:linear-gradient(123deg,#18011F 7%,var(--accent) 37%,var(--accent-2) 72%,var(--accent-3) 100%);
+  box-shadow:0 4px 4px rgba(181,1,167,.25),4px 4px 12px var(--accent-2) inset;
+  outline:2px solid #fff;
+  outline-offset:-3px;
+  transition:transform .25s cubic-bezier(.25,.1,.25,1),box-shadow .25s;
+  white-space:nowrap;
+}
+.btn-contact:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(181,1,167,.4),4px 4px 12px var(--accent-2) inset}
+.btn-contact:active{transform:translateY(0)}
+
+.btn-ghost{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  border-radius:999px;
+  border:2px solid var(--ink);
+  padding:clamp(10px,1.2vw,14px) clamp(22px,2.6vw,40px);
+  font-size:clamp(.72rem,.9vw,1rem);
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  color:var(--ink);
+  transition:background .25s,transform .25s;
+  white-space:nowrap;
+}
+.btn-ghost:hover{background:rgba(215,226,234,.1);transform:translateY(-2px)}
+
+@media (prefers-reduced-motion:reduce){
+  .btn-contact,.btn-ghost{transition:none}
+  .btn-contact:hover,.btn-ghost:hover{transform:none}
+}
+
+/* ═══ HERO ═══════════════════════════════════════════ */
+.hero{
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  overflow-x:clip;
+  position:relative;
+}
+
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:clamp(20px,2.4vw,32px) var(--pad) 0;
+  position:relative;
+  z-index:30;
+}
+nav a{
+  font-size:clamp(.68rem,1.2vw,1.4rem);
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--ink);
+  transition:opacity .2s;
+  /* WCAG 2.5.5: 44px minimum touch target, without shifting the visual position */
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  padding:0 2px;
+  margin:-10px 0;
+}
+nav a:hover{opacity:.7}
+@media (prefers-reduced-motion:reduce){nav a{transition:none}}
+
+.hero-type{
+  overflow:hidden;
+  padding:clamp(16px,2.4vw,40px) var(--pad) 0;
+  position:relative;
+  z-index:20;
+  pointer-events:none;
+}
+.hero-type h1{
+  width:100%;
+  line-height:.82;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+/* Two lines so the type stays huge instead of being clipped.
+   Each is sized so its own character count fills the measure edge-to-edge,
+   making the pair read as one solid mass (squint test, ch03). */
+.hero-type .l1,.hero-type .l2{
+  display:block;
+  white-space:nowrap;
+  width:max-content;
+  max-width:100%;
+}
+/* Solved against measured glyph ratios (l1 2.748, l2 4.260 em-widths):
+   ABHINAV fills the 1360px measure at 22.17vw and carries the dominance
+   (ch06); the greeting is a lighter, wider-tracked lead-in — differentiated
+   by weight and tracking, not opacity, so the gradient stays legible on
+   near-black. Caps stop overrun above ~1560px. */
+.hero-type .l1{
+  font-size:min(6.6vw,104px);
+  font-weight:500;
+  letter-spacing:.02em;
+  line-height:1;
+  margin-left:.1em;
+}
+.hero-type .l2{
+  font-size:min(22.1vw,346px);
+  letter-spacing:-.045em;
+  line-height:.86;
+}
+
+.hero-bottom{
+  margin-top:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:16px;
+  padding:0 var(--pad) clamp(28px,4vw,48px);
+  position:relative;
+  z-index:30;
+}
+.hero-tag{
+  color:var(--ink);
+  font-weight:300;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  line-height:1.35;
+  font-size:clamp(.75rem,1.4vw,1.5rem);
+  max-width:clamp(160px,22vw,280px);
+}
+
+/* Portrait / orb.
+   Centered by flex, never by transform — .reveal and the magnet
+   both write to `transform` on descendants and would clobber it. */
+.orb-wrap{
+  position:absolute;
+  inset:auto 0 0 0;
+  z-index:10;
+  display:flex;
+  justify-content:center;
+  pointer-events:none;
+}
+@media (max-width:639px){
+  .orb-wrap{inset:0;align-items:center}
+}
+.orb{
+  width:clamp(280px,42vw,540px);
+  height:auto;
+  aspect-ratio:1;
+  will-change:transform,opacity;
+  transition:transform .6s ease-in-out;
+  opacity:0;
+  animation:orbIn .9s cubic-bezier(.25,.1,.25,1) .6s forwards;
+}
+@keyframes orbIn{to{opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  .orb{opacity:1;animation:none;transition:none}
+}
+
+/* ═══ MARQUEE ════════════════════════════════════════ */
+.marquee{
+  background:var(--bg);
+  padding:clamp(72px,10vw,160px) 0 clamp(32px,4vw,40px);
+  overflow:hidden;
+  position:relative;
+  z-index:5;
+}
+.marquee-row{
+  display:flex;
+  gap:12px;
+  margin-bottom:12px;
+  will-change:transform;
+}
+.tile{
+  flex:0 0 auto;
+  width:clamp(240px,30vw,420px);
+  height:clamp(160px,19vw,270px);
+  border-radius:clamp(14px,1.4vw,20px);
+  border:1px solid var(--line);
+  background:#111214;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:clamp(18px,2vw,28px);
+  position:relative;
+  overflow:hidden;
+}
+.tile::after{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(120% 90% at var(--gx,15%) var(--gy,110%),var(--tint,rgba(182,0,168,.28)) 0%,transparent 62%);
+  pointer-events:none;
+}
+.tile-k{
+  font-size:clamp(1.1rem,2.4vw,2.1rem);
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:-.02em;
+  line-height:1.05;
+  position:relative;z-index:1;
+}
+.tile-s{
+  font-size:clamp(.62rem,.85vw,.8rem);
+  font-weight:400;
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  color:var(--ink-dim);
+  position:relative;z-index:1;
+}
+
+/* ═══ ABOUT ══════════════════════════════════════════ */
+.about{
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(40px,6vw,64px);
+  padding:clamp(72px,8vw,80px) var(--pad);
+  position:relative;
+  overflow:hidden;
+}
+.about h2{font-size:clamp(3rem,12vw,160px);text-align:center}
+
+.deco{
+  position:absolute;
+  opacity:.85;
+  pointer-events:none;
+  z-index:0;
+}
+.deco svg{display:block;width:100%;height:auto}
+.d-tl{top:4%;left:2%;width:clamp(110px,15vw,210px)}
+.d-tr{top:4%;right:2%;width:clamp(110px,15vw,210px)}
+.d-bl{bottom:7%;left:4%;width:clamp(92px,12vw,180px)}
+.d-br{bottom:7%;right:4%;width:clamp(100px,14vw,220px)}
+@media (max-width:639px){.deco{opacity:.35}}
+
+.about-copy{
+  max-width:600px;
+  text-align:center;
+  font-weight:500;
+  line-height:1.65;
+  font-size:clamp(1rem,2vw,1.35rem);
+  position:relative;z-index:1;
+}
+/* Resting opacity is .55, not .2: at .2 the unlit text measures 1.63:1 on
+   #0C0C0C and fails WCAG AA. .55 gives 5.01:1, so the paragraph is legible
+   even if the scroll handler never runs; the reveal adds emphasis, not
+   legibility. */
+.about-copy .ch{opacity:.55;transition:opacity .18s linear}
+.about-copy .ch.lit{opacity:1}
+@media (prefers-reduced-motion:reduce){.about-copy .ch{opacity:1;transition:none}}
+
+.stats{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:clamp(28px,5vw,72px);
+  position:relative;z-index:1;
+}
+.stat b{display:block;font-size:clamp(1.8rem,4vw,3rem);font-weight:900;letter-spacing:-.03em;line-height:1}
+.stat span{
+  display:block;margin-top:6px;
+  font-size:clamp(.6rem,.85vw,.78rem);font-weight:400;
+  text-transform:uppercase;letter-spacing:.2em;color:var(--ink-dim);
+}
+
+/* ═══ SKILLS (light slab) ════════════════════════════ */
+.skills{
+  background:var(--paper);
+  color:#0C0C0C;
+  border-radius:var(--r-lg) var(--r-lg) 0 0;
+  padding:clamp(72px,9vw,128px) var(--pad);
+  position:relative;
+  z-index:5;
+}
+.skills h2{
+  font-size:clamp(3rem,12vw,160px);
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:-.03em;
+  line-height:.85;
+  text-align:center;
+  color:#0C0C0C;
+  margin-bottom:clamp(56px,7vw,112px);
+}
+.skill-list{max-width:1024px;margin-inline:auto}
+.skill{
+  display:flex;
+  align-items:flex-start;
+  gap:clamp(16px,3vw,44px);
+  padding:clamp(28px,3.5vw,48px) 0;
+  border-top:1px solid rgba(12,12,12,.15);
+}
+.skill:last-child{border-bottom:1px solid rgba(12,12,12,.15)}
+.skill-n{
+  font-weight:900;
+  font-size:clamp(2.4rem,10vw,140px);
+  line-height:.8;
+  letter-spacing:-.05em;
+  color:#0C0C0C;
+  flex:0 0 auto;
+  min-width:clamp(2ch,11vw,2.2ch);
+}
+.skill-name{
+  font-weight:500;text-transform:uppercase;letter-spacing:.02em;
+  font-size:clamp(1rem,2.2vw,2.1rem);line-height:1.15;
+}
+.skill-desc{
+  font-weight:300;line-height:1.65;max-width:42rem;margin-top:10px;
+  font-size:clamp(.85rem,1.6vw,1.25rem);opacity:.6;
+}
+
+/* ═══ PROJECTS (sticky stack) ════════════════════════ */
+.projects{
+  background:var(--bg);
+  border-radius:var(--r-lg) var(--r-lg) 0 0;
+  margin-top:clamp(-56px,-4vw,-40px);
+  position:relative;
+  z-index:10;
+  padding:clamp(72px,9vw,128px) var(--pad) 0;
+}
+.projects h2{font-size:clamp(3rem,12vw,160px);text-align:center;margin-bottom:clamp(40px,5vw,72px)}
+
+.card-slot{
+  /* Slot owns the height; the card fills it exactly so its bottom edge
+     always lands inside the viewport under the sticky offset. */
+  height:min(78vh,760px);
+  min-height:460px;
+  display:flex;
+  align-items:stretch;
+  justify-content:center;
+  position:sticky;
+  top:clamp(64px,8vw,110px);
+  margin-bottom:clamp(20px,3vw,44px);
+}
+.card{
+  width:100%;
+  max-width:1200px;
+  height:100%;
+  border-radius:var(--r-lg);
+  border:2px solid var(--ink);
+  background:var(--bg);
+  padding:clamp(16px,1.8vw,28px);
+  transform-origin:top center;
+  display:flex;
+  flex-direction:column;
+  gap:clamp(12px,1.6vw,22px);
+  will-change:transform;
+  overflow:hidden;
+}
+@media (prefers-reduced-motion:reduce){.card{transform:none!important}}
+
+.card-top{
+  display:flex;
+  align-items:flex-start;
+  gap:clamp(12px,2vw,28px);
+  flex-wrap:wrap;
+}
+.card-n{
+  font-weight:900;
+  font-size:clamp(2.4rem,8vw,110px);
+  line-height:.8;
+  letter-spacing:-.05em;
+  flex:0 0 auto;
+}
+.card-meta{flex:1 1 260px;min-width:0}
+.card-cat{
+  font-size:clamp(.6rem,.8vw,.75rem);font-weight:400;
+  text-transform:uppercase;letter-spacing:.24em;color:var(--ink-dim);
+}
+.card-name{
+  font-weight:600;text-transform:uppercase;letter-spacing:-.01em;
+  font-size:clamp(1.05rem,2.4vw,2.2rem);line-height:1.1;margin-top:6px;
+}
+.card-blurb{
+  font-weight:300;line-height:1.6;color:var(--ink-dim);
+  font-size:clamp(.8rem,1.15vw,1.02rem);margin-top:10px;max-width:52ch;
+}
+.card-cta{flex:0 0 auto;margin-left:auto;align-self:center}
+
+.card-grid{
+  display:grid;
+  grid-template-columns:40fr 60fr;
+  gap:clamp(10px,1.2vw,18px);
+  flex:1 1 auto;
+  min-height:0; /* let the grid shrink inside the fixed-height card */
+}
+.card-col{display:flex;flex-direction:column;gap:clamp(10px,1.2vw,18px);min-height:0}
+.panel{
+  border-radius:clamp(20px,2.6vw,44px);
+  border:1px solid var(--line);
+  overflow:hidden;
+  position:relative;
+  background:#111214;
+  min-height:0;
+}
+/* Panels share the leftover height rather than demanding a fixed one. */
+.p-a{flex:2 1 0}
+.p-b{flex:3 1 0}
+.p-c{flex:1 1 0;height:100%}
+.panel svg{width:100%;height:100%;display:block}
+
+.chips{
+  position:absolute;left:0;right:0;bottom:0;
+  display:flex;flex-wrap:wrap;gap:8px;
+  padding:clamp(14px,1.6vw,24px);
+  z-index:2;
+}
+.chip{
+  font-size:clamp(.58rem,.72vw,.72rem);
+  font-weight:400;text-transform:uppercase;letter-spacing:.14em;
+  border:1px solid var(--line);border-radius:999px;
+  padding:6px 12px;
+  background:rgba(12,12,12,.55);
+  color:var(--ink);
+}
+.chips-mobile{display:none}
+
+/* Below md the stack unstacks: cards flow normally, art collapses to one
+   column, and the CTA goes full-width for a 44px+ touch target. */
+@media (max-width:767px){
+  .card-slot{height:auto;min-height:0;position:relative;top:0;margin-bottom:20px}
+  .card{transform:none!important;height:auto;overflow:visible}
+  .card-grid{grid-template-columns:1fr;flex:0 0 auto}
+  .card-col{flex-direction:row}
+  .panel{flex:1 1 0}
+  .p-a,.p-b,.p-c{flex:1 1 0;height:140px;min-height:140px}
+  .card-top{flex-direction:column;align-items:flex-start;gap:10px}
+  .card-meta{flex:0 0 auto;width:100%}   /* don't grow: was inflating .card-top */
+  .card-n{font-size:2.6rem}
+  .card-cta{margin-left:0;width:100%;order:3}
+  .card-cta .btn-ghost{display:flex;width:100%}
+  .panel .chips{display:none}          /* would be clipped by the short panel */
+  .chips-mobile{display:flex;padding:0;position:static;margin-top:4px}
+}
+
+/* ═══ CONTACT ════════════════════════════════════════ */
+.contact{
+  padding:clamp(96px,12vw,180px) var(--pad) clamp(40px,5vw,64px);
+  text-align:center;
+  display:flex;flex-direction:column;align-items:center;
+  gap:clamp(28px,4vw,44px);
+}
+.contact h2{font-size:clamp(2.6rem,11vw,150px)}
+.contact-links{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:clamp(14px,2vw,28px);
+}
+.contact-links a{
+  font-size:clamp(.7rem,1vw,.9rem);font-weight:400;
+  text-transform:uppercase;letter-spacing:.18em;color:var(--ink-dim);
+  transition:color .2s,box-shadow .2s;
+  /* 44px target; underline drawn with a shadow so it hugs the text,
+     not the padded hit area */
+  display:inline-flex;align-items:center;min-height:44px;
+  box-shadow:0 1px 0 transparent;
+}
+.contact-links a:hover{color:var(--ink);box-shadow:0 1px 0 var(--ink)}
+@media (prefers-reduced-motion:reduce){.contact-links a{transition:none}}
+
+footer{
+  border-top:1px solid var(--line);
+  margin-top:clamp(48px,6vw,80px);
+  padding:24px var(--pad);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  font-size:clamp(.62rem,.78vw,.75rem);
+  text-transform:uppercase;letter-spacing:.16em;
+  color:var(--ink-dim);
+}
+</style>
+
+<noscript><style>
+  /* Without JS the reveal classes never get .in, and the marquee/skill/card
+     content is never built. Show everything that does exist. */
+  .reveal{opacity:1!important;transform:none!important}
+  .orb{opacity:1!important;animation:none!important}
+  .about-copy .ch{opacity:1!important}
+  .marquee{display:none}
+</style></noscript>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<main id="main">
+
+<!-- ══════════ HERO ══════════ -->
+<header class="hero">
+  <nav class="reveal" style="--ry:-20px" aria-label="Primary">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="hero-type reveal" style="--d:.15s;--ry:40px">
+    <h1 class="hero-heading"><span class="l1">Hi, i&rsquo;m</span><span class="l2">Abhinav</span></h1>
+  </div>
+
+  <div class="orb-wrap">
+    <svg class="orb" id="orb" viewBox="0 0 400 400" aria-hidden="true">
+      <defs>
+        <radialGradient id="og" cx="38%" cy="32%" r="72%">
+          <stop offset="0%" stop-color="#E9D5FF"/>
+          <stop offset="30%" stop-color="#B600A8"/>
+          <stop offset="66%" stop-color="#7621B0"/>
+          <stop offset="100%" stop-color="#1B0424"/>
+        </radialGradient>
+        <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+          <stop offset="60%" stop-color="#B600A8" stop-opacity=".22"/>
+          <stop offset="100%" stop-color="#B600A8" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="soft"><feGaussianBlur stdDeviation="1.1"/></filter>
+      </defs>
+
+      <circle cx="200" cy="205" r="190" fill="url(#glow)"/>
+      <circle cx="200" cy="200" r="150" fill="url(#og)"/>
+
+      <!-- latitude / longitude wireframe -->
+      <g stroke="#D7E2EA" stroke-opacity=".28" fill="none" filter="url(#soft)">
+        <circle cx="200" cy="200" r="150"/>
+        <ellipse cx="200" cy="200" rx="150" ry="42"/>
+        <ellipse cx="200" cy="200" rx="150" ry="92"/>
+        <ellipse cx="200" cy="200" rx="150" ry="132"/>
+        <ellipse cx="200" cy="200" rx="42" ry="150"/>
+        <ellipse cx="200" cy="200" rx="92" ry="150"/>
+        <ellipse cx="200" cy="200" rx="132" ry="150"/>
+      </g>
+
+      <!-- neural nodes -->
+      <g fill="#D7E2EA">
+        <circle cx="132" cy="128" r="3.4" opacity=".9"/>
+        <circle cx="248" cy="112" r="2.6" opacity=".7"/>
+        <circle cx="290" cy="210" r="3.2" opacity=".8"/>
+        <circle cx="180" cy="286" r="2.8" opacity=".75"/>
+        <circle cx="104" cy="228" r="2.4" opacity=".6"/>
+        <circle cx="216" cy="196" r="4" opacity="1"/>
+      </g>
+      <g stroke="#D7E2EA" stroke-opacity=".35" stroke-width="1">
+        <line x1="132" y1="128" x2="216" y2="196"/>
+        <line x1="248" y1="112" x2="216" y2="196"/>
+        <line x1="290" y1="210" x2="216" y2="196"/>
+        <line x1="180" y1="286" x2="216" y2="196"/>
+        <line x1="104" y1="228" x2="216" y2="196"/>
+      </g>
+
+      <!-- specular highlight -->
+      <ellipse cx="150" cy="140" rx="44" ry="30" fill="#fff" opacity=".13" transform="rotate(-28 150 140)"/>
+    </svg>
+  </div>
+
+  <div class="hero-bottom">
+    <p class="hero-tag reveal" style="--d:.35s;--ry:20px">
+      A student building machine&nbsp;learning tools that solve problems people actually have
+    </p>
+    <div class="reveal" style="--d:.5s;--ry:20px">
+      <a class="btn-contact" href="#contact">Contact Me</a>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ MARQUEE ══════════ -->
+<section class="marquee" aria-label="Skills and tools">
+  <div class="marquee-row" id="row1"></div>
+  <div class="marquee-row" id="row2"></div>
+</section>
+
+<!-- ══════════ ABOUT ══════════ -->
+<section class="about" id="about">
+  <!-- decorative geometry -->
+  <div class="deco d-tl reveal" style="--d:.1s;--rx:-80px;--ry:0">
+    <svg viewBox="0 0 200 200" aria-hidden="true">
+      <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#BBCCD7"/><stop offset="1" stop-color="#3A3F4A"/>
+      </linearGradient></defs>
+      <circle cx="100" cy="100" r="72" fill="url(#g1)"/>
+      <circle cx="72" cy="78" r="13" fill="#0C0C0C" opacity=".18"/>
+      <circle cx="126" cy="120" r="20" fill="#0C0C0C" opacity=".14"/>
+      <circle cx="110" cy="62" r="8" fill="#0C0C0C" opacity=".12"/>
+    </svg>
+  </div>
+  <div class="deco d-tr reveal" style="--d:.15s;--rx:80px;--ry:0">
+    <svg viewBox="0 0 200 200" aria-hidden="true">
+      <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#B600A8"/><stop offset="1" stop-color="#7621B0"/>
+      </linearGradient></defs>
+      <g fill="url(#g2)">
+        <rect x="34" y="34" width="58" height="58" rx="12"/>
+        <rect x="108" y="34" width="58" height="58" rx="12" opacity=".55"/>
+        <rect x="34" y="108" width="58" height="58" rx="12" opacity=".55"/>
+        <rect x="108" y="108" width="58" height="58" rx="12" opacity=".28"/>
+      </g>
+    </svg>
+  </div>
+  <div class="deco d-bl reveal" style="--d:.25s;--rx:-80px;--ry:0">
+    <svg viewBox="0 0 200 200" aria-hidden="true">
+      <defs><linearGradient id="g3" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0" stop-color="#BE4C00"/><stop offset="1" stop-color="#B600A8"/>
+      </linearGradient></defs>
+      <path d="M100 24 L172 66 L172 150 L100 192 L28 150 L28 66 Z" fill="url(#g3)"/>
+      <path d="M100 24 L172 66 L100 108 L28 66 Z" fill="#fff" opacity=".14"/>
+    </svg>
+  </div>
+  <div class="deco d-br reveal" style="--d:.3s;--rx:80px;--ry:0">
+    <svg viewBox="0 0 200 200" aria-hidden="true">
+      <g stroke="#BBCCD7" fill="none" stroke-width="2" opacity=".8">
+        <circle cx="100" cy="100" r="76"/>
+        <circle cx="100" cy="100" r="52"/>
+        <circle cx="100" cy="100" r="28"/>
+      </g>
+      <circle cx="100" cy="100" r="12" fill="#B600A8"/>
+      <circle cx="176" cy="100" r="7" fill="#BBCCD7"/>
+      <circle cx="100" cy="48" r="5" fill="#BE4C00"/>
+    </svg>
+  </div>
+
+  <h2 class="hero-heading reveal" style="--ry:40px">About me</h2>
+
+  <p class="about-copy" id="aboutCopy">I&rsquo;m a sophomore at Metea Valley High School who got hooked on machine learning and never really stopped. I founded Choose &amp; Rise to help students find the right college and career path, and I build AI tools — computer vision, health, agriculture, accessibility — because the interesting part is watching a model do something useful for a real person. Let&rsquo;s build something together.</p>
+
+  <div class="stats reveal" style="--d:.2s">
+    <div class="stat"><b>6+</b><span>Projects shipped</span></div>
+    <div class="stat"><b>3.8</b><span>Weighted GPA</span></div>
+    <div class="stat"><b>2028</b><span>Class of</span></div>
+    <div class="stat"><b>5</b><span>Certifications</span></div>
+  </div>
+
+  <div class="reveal" style="--d:.3s">
+    <a class="btn-contact" href="#contact">Contact Me</a>
+  </div>
+</section>
+
+<!-- ══════════ SKILLS ══════════ -->
+<section class="skills" id="skills">
+  <h2 class="reveal" style="--ry:40px">What I do</h2>
+  <div class="skill-list" id="skillList">
+    <div class="skill reveal" style="--d:0s">
+      <div class="skill-n">01</div>
+      <div><h3 class="skill-name">Machine Learning</h3><p class="skill-desc">Training and evaluating models for classification and prediction — plant disease detection from leaf images, food recognition for nutrition estimation. Reinforcement learning and statistics certified.</p></div>
+    </div>
+    <div class="skill reveal" style="--d:.1s">
+      <div class="skill-n">02</div>
+      <div><h3 class="skill-name">Computer Vision</h3><p class="skill-desc">Image recognition pipelines that turn a photo into a useful answer: what crop disease is this, what did I just eat, what does this document say.</p></div>
+    </div>
+    <div class="skill reveal" style="--d:.2s">
+      <div class="skill-n">03</div>
+      <div><h3 class="skill-name">Web Development</h3><p class="skill-desc">Responsive sites built from scratch in HTML, CSS, and JavaScript, deployed on Cloudflare Pages with GA4 analytics and continuous iteration.</p></div>
+    </div>
+    <div class="skill reveal" style="--d:.3s">
+      <div class="skill-n">04</div>
+      <div><h3 class="skill-name">AI Automation</h3><p class="skill-desc">End-to-end pipelines with n8n and NVIDIA Nemotron models — content generation, scheduling, and posting without a human in the loop.</p></div>
+    </div>
+    <div class="skill reveal" style="--d:.4s">
+      <div class="skill-n">05</div>
+      <div><h3 class="skill-name">Research &amp; Writing</h3><p class="skill-desc">AI/ML research through the Pulse High School Research Program: experiments, technical documentation, and presenting findings to a team.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PROJECTS ══════════
+     Cards are authored in HTML so the section survives with JS disabled and
+     is visible to crawlers; script.js only injects the generative art and
+     drives the sticky-stack scaling. -->
+<section class="projects" id="projects">
+  <h2 class="hero-heading reveal" style="--ry:40px">Projects</h2>
+  <div id="cardStack">
+
+    <div class="card-slot"><article class="card" data-i="0" data-hue="290,320,268">
+      <div class="card-top">
+        <div class="card-n hero-heading">01</div>
+        <div class="card-meta">
+          <div class="card-cat">Founder · Nonprofit</div>
+          <h3 class="card-name">Choose &amp; Rise</h3>
+          <p class="card-blurb">A nonprofit educational platform helping high school students explore colleges, majors, and career pathways. Designed, built, and maintained end to end.</p>
+        </div>
+        <div class="card-cta"><a class="btn-ghost" href="https://choose-and-rise.pages.dev" target="_blank" rel="noopener">Live Project<span class="sr-only"> — Choose and Rise</span></a></div>
+      </div>
+      <div class="card-grid">
+        <div class="card-col"><div class="panel p-a"></div><div class="panel p-b"></div></div>
+        <div class="card-col"><div class="panel p-c"><div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">Cloudflare Pages</span><span class="chip">GA4</span></div></div></div>
+      </div>
+      <div class="chips chips-mobile"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">Cloudflare Pages</span><span class="chip">GA4</span></div>
+    </article></div>
+
+    <div class="card-slot"><article class="card" data-i="1" data-hue="200,178,220">
+      <div class="card-top">
+        <div class="card-n hero-heading">02</div>
+        <div class="card-meta">
+          <div class="card-cat">Co-Founder · Wellness</div>
+          <h3 class="card-name">Mental Health Initiative</h3>
+          <p class="card-blurb">A student-led project supporting peer wellness. Co-led planning, outreach strategy, and platform development to build a supportive community at school.</p>
+        </div>
+        <div class="card-cta"><a class="btn-ghost" href="#contact">Get in touch<span class="sr-only"> — Mental Health Initiative</span></a></div>
+      </div>
+      <div class="card-grid">
+        <div class="card-col"><div class="panel p-a"></div><div class="panel p-b"></div></div>
+        <div class="card-col"><div class="panel p-c"><div class="chips"><span class="chip">Product</span><span class="chip">Outreach</span><span class="chip">Community</span></div></div></div>
+      </div>
+      <div class="chips chips-mobile"><span class="chip">Product</span><span class="chip">Outreach</span><span class="chip">Community</span></div>
+    </article></div>
+
+    <div class="card-slot"><article class="card" data-i="2" data-hue="95,140,64">
+      <div class="card-top">
+        <div class="card-n hero-heading">03</div>
+        <div class="card-meta">
+          <div class="card-cat">Machine Learning</div>
+          <h3 class="card-name">Plant Disease Detector</h3>
+          <p class="card-blurb">A classifier that identifies leaf diseases from an uploaded photo, making agricultural diagnosis accessible to growers without a lab or an agronomist.</p>
+        </div>
+        <div class="card-cta"><a class="btn-ghost" href="#contact">Get in touch<span class="sr-only"> — Plant Disease Detector</span></a></div>
+      </div>
+      <div class="card-grid">
+        <div class="card-col"><div class="panel p-a"></div><div class="panel p-b"></div></div>
+        <div class="card-col"><div class="panel p-c"><div class="chips"><span class="chip">Python</span><span class="chip">CNN</span><span class="chip">Image Classification</span><span class="chip">AgriTech</span></div></div></div>
+      </div>
+      <div class="chips chips-mobile"><span class="chip">Python</span><span class="chip">CNN</span><span class="chip">Image Classification</span><span class="chip">AgriTech</span></div>
+    </article></div>
+
+    <div class="card-slot"><article class="card" data-i="3" data-hue="24,44,8">
+      <div class="card-top">
+        <div class="card-n hero-heading">04</div>
+        <div class="card-meta">
+          <div class="card-cat">AI Health</div>
+          <h3 class="card-name">Personal Diet Tracker</h3>
+          <p class="card-blurb">Photograph a meal, get calories and nutrition back. An image-recognition workflow that removes the friction from food logging.</p>
+        </div>
+        <div class="card-cta"><a class="btn-ghost" href="#contact">Get in touch<span class="sr-only"> — Personal Diet Tracker</span></a></div>
+      </div>
+      <div class="card-grid">
+        <div class="card-col"><div class="panel p-a"></div><div class="panel p-b"></div></div>
+        <div class="card-col"><div class="panel p-c"><div class="chips"><span class="chip">Python</span><span class="chip">Computer Vision</span><span class="chip">Nutrition API</span></div></div></div>
+      </div>
+      <div class="chips chips-mobile"><span class="chip">Python</span><span class="chip">Computer Vision</span><span class="chip">Nutrition API</span></div>
+    </article></div>
+
+    <div class="card-slot"><article class="card" data-i="4" data-hue="262,300,240">
+      <div class="card-top">
+        <div class="card-n hero-heading">05</div>
+        <div class="card-meta">
+          <div class="card-cat">Accessibility</div>
+          <h3 class="card-name">Vision Guide</h3>
+          <p class="card-blurb">A high-contrast scan-to-read tool for visually impaired users, with text enhancement and an interface optimized for readability over decoration.</p>
+        </div>
+        <div class="card-cta"><a class="btn-ghost" href="#contact">Get in touch<span class="sr-only"> — Vision Guide</span></a></div>
+      </div>
+      <div class="card-grid">
+        <div class="card-col"><div class="panel p-a"></div><div class="panel p-b"></div></div>
+        <div class="card-col"><div class="panel p-c"><div class="chips"><span class="chip">OCR</span><span class="chip">Accessibility</span><span class="chip">High Contrast</span></div></div></div>
+      </div>
+      <div class="chips chips-mobile"><span class="chip">OCR</span><span class="chip">Accessibility</span><span class="chip">High Contrast</span></div>
+    </article></div>
+
+    <div class="card-slot"><article class="card" data-i="5" data-hue="330,18,296">
+      <div class="card-top">
+        <div class="card-n hero-heading">06</div>
+        <div class="card-meta">
+          <div class="card-cat">Automation</div>
+          <h3 class="card-name">Social Media Pipeline</h3>
+          <p class="card-blurb">An automated content workflow built on n8n and NVIDIA Nemotron models — generating, scheduling, and publishing posts on a loop.</p>
+        </div>
+        <div class="card-cta"><a class="btn-ghost" href="#contact">Get in touch<span class="sr-only"> — Social Media Pipeline</span></a></div>
+      </div>
+      <div class="card-grid">
+        <div class="card-col"><div class="panel p-a"></div><div class="panel p-b"></div></div>
+        <div class="card-col"><div class="panel p-c"><div class="chips"><span class="chip">n8n</span><span class="chip">Nemotron</span><span class="chip">LLM</span><span class="chip">Automation</span></div></div></div>
+      </div>
+      <div class="chips chips-mobile"><span class="chip">n8n</span><span class="chip">Nemotron</span><span class="chip">LLM</span><span class="chip">Automation</span></div>
+    </article></div>
+
+  </div>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section class="contact" id="contact">
+  <h2 class="hero-heading reveal" style="--ry:40px">Let&rsquo;s talk</h2>
+  <p class="hero-tag reveal" style="--d:.1s;max-width:44ch;text-align:center">
+    Open to internships, summer programs, and research collaborations
+  </p>
+  <div class="reveal" style="--d:.2s">
+    <a class="btn-contact" href="mailto:abhinavallani02@gmail.com">Email Me</a>
+  </div>
+  <div class="contact-links reveal" style="--d:.3s">
+    <a href="mailto:abhinavallani02@gmail.com">abhinavallani02@gmail.com</a>
+    <a href="https://www.linkedin.com/in/abhinav-allani-1a9207389" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://choose-and-rise.pages.dev" target="_blank" rel="noopener">Choose &amp; Rise</a>
+    <a href="tel:+17402726394">(740) 272-6394</a>
+  </div>
+</section>
+
+<footer>
+  <span>Abhinav Allani</span>
+  <span>Aurora, Illinois</span>
+  <span>&copy; 2026</span>
+</footer>
+
+</main>
+
+<script>
+(function(){
+'use strict';
+
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ─── Data ────────────────────────────────────────── */
+const TILES = [
+  ['Python','Language',  'rgba(182,0,168,.30)'],
+  ['Machine Learning','Discipline','rgba(118,33,176,.32)'],
+  ['JavaScript','Language','rgba(190,76,0,.26)'],
+  ['Computer Vision','Discipline','rgba(182,0,168,.26)'],
+  ['HTML / CSS','Web','rgba(187,204,215,.16)'],
+  ['Reinforcement Learning','Certified · Grade A','rgba(118,33,176,.30)'],
+  ['Generative AI','Certified','rgba(190,76,0,.30)'],
+  ['NVIDIA Nemotron','Model','rgba(182,0,168,.24)'],
+  ['Statistics for Data Science','Certified · Grade A','rgba(118,33,176,.24)'],
+  ['Google Analytics 4','Analytics','rgba(187,204,215,.14)'],
+  ['Cloudflare Pages','Deploy','rgba(190,76,0,.24)'],
+  ['n8n Automation','Pipeline','rgba(118,33,176,.28)'],
+  ['Flask','Framework','rgba(182,0,168,.22)'],
+  ['Image Classification','Discipline','rgba(190,76,0,.28)'],
+  ['Supabase','Backend','rgba(118,33,176,.26)'],
+  ['Project Management','Soft Skill','rgba(187,204,215,.12)'],
+  ['ELL Tutoring','Certified','rgba(182,0,168,.20)'],
+  ['Prompt Engineering','Practice','rgba(190,76,0,.22)'],
+  ['Model Evaluation','Research','rgba(118,33,176,.22)'],
+  ['Responsive Design','Web','rgba(187,204,215,.15)'],
+  ['Leadership','Soft Skill','rgba(182,0,168,.18)']
+];
+
+/* Skills and project cards are authored in the HTML — this script only
+   enhances them (art, stacking, reveals), so the page degrades gracefully
+   with JS off and is fully readable by crawlers. */
+
+/* ─── Marquee ─────────────────────────────────────── */
+function tile([k,s,tint],i){
+  const el = document.createElement('div');
+  el.className = 'tile';
+  el.style.setProperty('--tint', tint);
+  el.style.setProperty('--gx', (10 + (i*37)%80) + '%');
+  el.style.setProperty('--gy', (i%2 ? '110%' : '-10%'));
+  el.innerHTML = '<span class="tile-s">'+s+'</span><span class="tile-k">'+k+'</span>';
+  return el;
+}
+
+const row1 = document.getElementById('row1');
+const row2 = document.getElementById('row2');
+const a = TILES.slice(0,11), b = TILES.slice(11);
+for (let r=0;r<3;r++){
+  a.forEach((t,i)=>row1.appendChild(tile(t,i)));
+  b.forEach((t,i)=>row2.appendChild(tile(t,i+11)));
+}
+row1.setAttribute('aria-hidden','true');
+row2.setAttribute('aria-hidden','true');
+
+/* ─── Project panels (generative SVG art) ─────────── */
+/* Generative panel art. Deliberately low-chroma and dark: this is
+   atmospheric texture behind the content, not a subject. Saturation is
+   capped ~38% and lightness ~26% so the panels recede and the type on the
+   card stays dominant (ch06 dominance; ch09 cool/dark recedes). */
+function art(hue, seed, kind){
+  const h1=hue[0], h2=hue[1], h3=hue[2];
+  const uid = 'a'+seed;
+  if (kind==='mesh'){
+    let dots='';
+    for(let i=0;i<26;i++){
+      const x=(i*61)%100, y=(i*37+13)%100, r=1+((i*7)%3);
+      dots += `<circle cx="${x}" cy="${y}" r="${r*0.55}" fill="hsl(${h3} 30% 82%)" opacity="${0.14+((i%4)*0.09)}"/>`;
+    }
+    let lines='';
+    for(let i=0;i<12;i++){
+      const x1=(i*61)%100,y1=(i*37+13)%100,x2=((i+3)*61)%100,y2=((i+3)*37+13)%100;
+      lines += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="hsl(${h3} 30% 82%)" stroke-width=".3" opacity=".1"/>`;
+    }
+    return `<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs><linearGradient id="${uid}" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="hsl(${h1} 34% 15%)"/><stop offset="1" stop-color="hsl(${h2} 30% 7%)"/>
+      </linearGradient></defs>
+      <rect width="100" height="100" fill="url(#${uid})"/>${lines}${dots}</svg>`;
+  }
+  if (kind==='wave'){
+    let paths='';
+    for(let i=0;i<7;i++){
+      const o=i*9;
+      paths += `<path d="M0 ${30+o} C 25 ${14+o}, 42 ${52+o}, 66 ${30+o} S 92 ${12+o}, 100 ${34+o}" fill="none" stroke="hsl(${h2} 32% ${52-i*4}%)" stroke-width=".7" opacity="${0.3-i*0.03}"/>`;
+    }
+    return `<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs><radialGradient id="${uid}" cx="30%" cy="20%" r="90%">
+        <stop offset="0" stop-color="hsl(${h1} 36% 18%)"/><stop offset="1" stop-color="hsl(${h3} 30% 6%)"/>
+      </radialGradient></defs>
+      <rect width="100" height="100" fill="url(#${uid})"/>${paths}</svg>`;
+  }
+  // 'grid'
+  let cells='';
+  for(let y=0;y<8;y++) for(let x=0;x<8;x++){
+    const v=((x*3+y*5+seed)%9)/9;
+    cells += `<rect x="${x*12.5}" y="${y*12.5}" width="12.5" height="12.5" fill="hsl(${h1+v*24} ${18+v*20}% ${8+v*18}%)" opacity="${0.4+v*0.45}"/>`;
+  }
+  return `<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <rect width="100" height="100" fill="hsl(${h3} 28% 6%)"/>${cells}
+    <circle cx="50" cy="50" r="16" fill="none" stroke="hsl(${h2} 34% 78%)" stroke-width=".6" opacity=".2"/>
+    <circle cx="50" cy="50" r="30" fill="none" stroke="hsl(${h2} 34% 78%)" stroke-width=".45" opacity=".12"/></svg>`;
+}
+
+/* Paint the authored panels and offset each sticky slot so the stack fans. */
+const cardsEls = [...document.querySelectorAll('.card')];
+const total = cardsEls.length;
+
+cardsEls.forEach((card,i)=>{
+  const hue = (card.dataset.hue || '290,320,268').split(',').map(Number);
+  card.parentElement.style.top = `calc(clamp(64px,8vw,110px) + ${i*22}px)`;
+  const kinds = { 'p-a':'wave', 'p-b':'grid', 'p-c':'mesh' };
+  let k = 0;
+  for (const cls in kinds){
+    const panel = card.querySelector('.' + cls);
+    if (!panel) continue;
+    panel.insertAdjacentHTML('afterbegin', art(hue, i*3 + (++k), kinds[cls]));
+  }
+});
+
+/* ─── Reveal on scroll ────────────────────────────── */
+if ('IntersectionObserver' in window && !reduced){
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin:'0px 0px -40px 0px', threshold:0 });
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+} else {
+  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+}
+
+/* ─── Scroll-driven effects (single rAF loop) ─────── */
+const marquee = document.querySelector('.marquee');
+const orb = document.getElementById('orb');
+const cards = cardsEls;
+const chars = [];
+
+/* Char-by-char about copy */
+(function(){
+  const p = document.getElementById('aboutCopy');
+  const text = p.textContent;
+  p.textContent = '';
+  const frag = document.createDocumentFragment();
+  // Wrap each character in a span so it can fade individually. Spaces stay
+  // real spaces (not &nbsp;) and live outside the spans, so the paragraph
+  // still wraps normally at word boundaries.
+  for (const c of text){
+    if (c === ' '){
+      frag.appendChild(document.createTextNode(' '));
+      continue;
+    }
+    const s = document.createElement('span');
+    s.className = 'ch';
+    s.textContent = c;
+    frag.appendChild(s);
+    chars.push(s);
+  }
+  p.appendChild(frag);
+  p.setAttribute('aria-label', text);
+})();
+const aboutCopy = document.getElementById('aboutCopy');
+
+let ticking = false;
+function onScroll(){
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(()=>{
+    const vh = innerHeight;
+
+    // Marquee counter-scroll
+    if (marquee){
+      const top = marquee.getBoundingClientRect().top + scrollY;
+      const off = (scrollY - top + vh) * 0.3;
+      row1.style.transform = `translate3d(${off - 200}px,0,0)`;
+      row2.style.transform = `translate3d(${-(off - 200)}px,0,0)`;
+    }
+
+    // Card stacking scale
+    for (const card of cards){
+      const i = +card.dataset.i;
+      const slot = card.parentElement;
+      const r = slot.getBoundingClientRect();
+      const target = 1 - (total - 1 - i) * 0.03;
+      // progress: 0 while slot in view, →1 as it scrolls past
+      const prog = Math.min(1, Math.max(0, (-r.top + 100) / (r.height || 1)));
+      card.style.transform = `scale(${(1 - (1 - target) * prog).toFixed(4)})`;
+    }
+
+    // About copy character reveal
+    if (!reduced && chars.length){
+      const r = aboutCopy.getBoundingClientRect();
+      const start = vh * 0.85, end = vh * 0.18;
+      const prog = (start - r.top) / (start - end + r.height);
+      const lit = Math.round(Math.min(1, Math.max(0, prog)) * chars.length);
+      for (let i=0;i<chars.length;i++){
+        chars[i].classList.toggle('lit', i < lit);
+      }
+    }
+
+    ticking = false;
+  });
+}
+
+if (!reduced){
+  addEventListener('scroll', onScroll, { passive:true });
+  addEventListener('resize', onScroll, { passive:true });
+  onScroll();
+} else {
+  chars.forEach(c=>c.classList.add('lit'));
+}
+
+/* ─── Magnet effect on the orb ────────────────────── */
+if (!reduced && matchMedia('(hover:hover)').matches){
+  const PAD = 150, STRENGTH = 3;
+  let active = false;
+  addEventListener('mousemove', (e)=>{
+    const r = orb.getBoundingClientRect();
+    const cx = r.left + r.width/2, cy = r.top + r.height/2;
+    const dx = e.clientX - cx, dy = e.clientY - cy;
+    const near = Math.abs(dx) < r.width/2 + PAD && Math.abs(dy) < r.height/2 + PAD;
+    if (near){
+      if (!active){ orb.style.transition = 'transform .3s ease-out'; active = true; }
+      orb.style.transform = `translate3d(${dx/STRENGTH}px,${dy/STRENGTH}px,0)`;
+    } else if (active){
+      orb.style.transition = 'transform .6s ease-in-out';
+      orb.style.transform = 'translate3d(0,0,0)';
+      active = false;
+    }
+  }, { passive:true });
+}
+
+})();
+</script>
+</body>
+</html>
