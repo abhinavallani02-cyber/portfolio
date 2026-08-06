@@ -1,556 +1,431 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Abhinav Allani — Archive</title>
-<meta name="description" content="Abhinav Allani — AI, machine learning, and web development. Founder of Choose &amp; Rise. An archive of projects and work." />
-<link rel="canonical" href="https://abhinavallani.pages.dev/" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Abhinav Allani — Archive" />
-<meta property="og:description" content="AI · ML · Web. Founder of Choose &amp; Rise. Class of 2028." />
-<meta property="og:url" content="https://abhinavallani.pages.dev/" />
-<meta property="og:image" content="https://abhinavallani.pages.dev/assets/hero.jpg" />
-<meta name="twitter:card" content="summary_large_image" />
-
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23000'/><text y='74' x='50' text-anchor='middle' font-size='68' font-family='sans-serif' font-weight='500' fill='%23fff'>a</text></svg>" />
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
-
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --font:'Inter Tight',system-ui,sans-serif;
-}
-html{-webkit-text-size-adjust:100%}
-body{font-family:var(--font);font-weight:500;background:#fff;color:#fff}
-img{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
-
-/* root scroll spacer — height set by JS */
-#scroll-spacer{
-  position:relative;
-  user-select:none;
-  -webkit-user-select:none;
-  background:#000;
-  min-height:100vh;
-}
-@media (hover:hover) and (pointer:fine){
-  body{cursor:none}
-}
-
-.blend{mix-blend-mode:exclusion}
-.fixed-ui{position:fixed;pointer-events:none;z-index:20}
-
-.reduced-hidden{}
-@media (prefers-reduced-motion:reduce){
-  .reduced-hidden{display:none!important}
-}
-
-/* ─── Custom cursor ─── */
-#cursor{
-  position:fixed;top:0;left:0;pointer-events:none;z-index:50;
-  transform:translate(-50%,-50%);
-  mix-blend-mode:exclusion;
-  transition:opacity .3s;
-  display:none;
-}
-@media (hover:hover) and (pointer:fine){ #cursor{display:block} }
-
-/* ─── Hero portrait canvas ─── */
-#main-canvas{
-  position:fixed;inset:0;width:100%;height:100%;z-index:0;
-  pointer-events:none;overflow:hidden;background:#000;
-}
-#portrait{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:70% 28%;
-  will-change:transform;
-  transition:transform .5s cubic-bezier(.25,.1,.25,1),opacity .6s ease;
-  opacity:0;
-}
-#portrait.ready{opacity:1}
-/* readability scrim: darker toward lower-left where text lives */
-#scrim{
-  position:absolute;inset:0;pointer-events:none;
-  background:
-    linear-gradient(105deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.34) 34%, rgba(0,0,0,0) 60%),
-    linear-gradient(to top, rgba(0,0,0,.78) 0%, rgba(0,0,0,0) 42%),
-    radial-gradient(120% 90% at 78% 22%, rgba(0,0,0,0) 40%, rgba(0,0,0,.30) 100%);
-}
-/* cursor spotlight over portrait */
-#spot{
-  position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(180px 180px at var(--mx,50%) var(--my,40%),rgba(255,255,255,.14),transparent 70%);
-  mix-blend-mode:screen;opacity:0;transition:opacity .4s;
-}
-@media (hover:hover) and (pointer:fine){ #main-canvas:hover #spot,#spot.on{opacity:1} }
-
-/* ─── Logo ─── */
-#logo{top:16px;left:16px;width:124px}
-@media (min-width:640px){ #logo{top:32px;left:32px;width:210px} }
-@media (min-width:1024px){ #logo{width:280px} }
-#logo .wm{font-size:0;line-height:0}
-#logo .word{
-  font-weight:600;font-size:clamp(38px,7vw,84px);line-height:.8;
-  letter-spacing:-.05em;color:#fff;text-transform:lowercase;
-  display:flex;align-items:baseline;gap:.14em;
-}
-#logo .r{
-  font-size:.3em;border:2px solid #fff;border-radius:50%;
-  width:1.5em;height:1.5em;display:inline-flex;align-items:center;justify-content:center;
-  transform:translateY(-.9em);letter-spacing:0;
-}
-
-/* ─── Caption ─── */
-#caption{
-  left:16px;top:104px;width:calc(100vw - 32px);
-  font-size:12px;line-height:1.4;letter-spacing:-.04em;color:#fff;
-}
-@media (min-width:640px){ #caption{left:32px;top:150px;width:calc(50vw - 48px)} }
-@media (min-width:1024px){ #caption{top:180px;width:520px} }
-
-/* ─── Nav ─── */
-#nav{top:16px;right:16px;height:30px;display:flex;align-items:center;gap:20px;justify-content:flex-end}
-@media (min-width:1024px){ #nav{top:32px;right:32px;gap:50px;width:auto} }
-#nav .about{display:none;font-size:15px;text-transform:uppercase}
-@media (min-width:640px){ #nav .about{display:block} }
-#nav .burger{width:24px;height:24px;pointer-events:auto}
-@media (min-width:1024px){ #nav .burger{width:30px;height:30px} }
-#nav .cart{font-size:13px;text-transform:uppercase;pointer-events:auto}
-@media (min-width:1024px){ #nav .cart{font-size:15px} }
-
-/* ─── Product / identity info (bottom) ─── */
-#outro-info{
-  left:0;right:0;bottom:48px;display:flex;flex-direction:column;align-items:center;
-}
-@media (min-width:1024px){
-  #outro-info{left:auto;right:32px;bottom:80px;width:360px}
-}
-#outro-info .top{
-  display:flex;flex-direction:column;align-items:flex-start;
-  width:252px;margin-bottom:12px;
-}
-@media (min-width:1024px){ #outro-info .top{width:100%;margin-bottom:28px} }
-#circle{position:relative;width:20px;height:20px;margin-bottom:14px}
-@media (min-width:1024px){ #circle{width:30px;height:30px;margin-bottom:18px} }
-#circle svg{position:absolute;inset:0;width:100%;height:100%}
-#circle-symbol{
-  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  font-size:10px;letter-spacing:-.04em;text-transform:uppercase;color:#fff;
-}
-@media (min-width:1024px){ #circle-symbol{font-size:15px} }
-#outro-info .label{
-  font-size:20px;line-height:1;text-align:center;letter-spacing:-.04em;text-transform:uppercase;color:#fff;
-}
-@media (min-width:1024px){ #outro-info .label{font-size:30px} }
-#outro-info .price{
-  font-size:56px;line-height:1;text-align:center;letter-spacing:-.05em;color:#fff;font-weight:600;
-}
-@media (min-width:1024px){ #outro-info .price{font-size:78px} }
-
-/* ─── "connect" outro button ─── */
-#outro-buy{
-  left:16px;right:16px;bottom:60px;height:100px;
-  transform-origin:right bottom;transform:scale(0);
-  background:#fff;border-radius:1335px;display:flex;align-items:center;justify-content:center;
-  pointer-events:none;
-}
-@media (min-width:1024px){
-  #outro-buy{left:auto;right:32px;bottom:32px;width:360px;height:174px}
-}
-#outro-buy a{
-  font-size:64px;letter-spacing:-.05em;color:#fff;mix-blend-mode:exclusion;
-  font-weight:600;text-transform:lowercase;pointer-events:auto;
-}
-@media (min-width:1024px){ #outro-buy a{font-size:104px} }
-
-/* ─── White overlay ─── */
-#outro-overlay{position:fixed;inset:0;pointer-events:none;z-index:12;background:#fff;opacity:0}
-
-/* ─── Footer ─── */
-#outro-footer{
-  left:16px;bottom:24px;display:flex;gap:0;justify-content:space-between;
-  width:calc(100vw - 32px);opacity:0;
-}
-@media (min-width:1024px){ #outro-footer{bottom:32px;gap:80px;width:auto;justify-content:flex-start} }
-#outro-footer span{font-size:11px;letter-spacing:-.02em;text-transform:uppercase;color:#fff}
-@media (min-width:1024px){ #outro-footer span{font-size:13px} }
-
-/* ─── Black panel / gallery ─── */
-#panel{
-  position:fixed;inset:0;background:#000;z-index:10;
-  transform:translateY(100vh);will-change:transform;overflow:hidden;
-}
-#panel-inner{width:100%;padding-top:min(400px,40vh);will-change:transform}
-#grid{
-  display:grid;gap:clamp(10px,2.4vw,40px);
-  padding:0 clamp(12px,3vw,48px) 40vh;
-  grid-template-columns:repeat(2,1fr);
-}
-@media (min-width:640px){ #grid{grid-template-columns:repeat(3,1fr)} }
-@media (min-width:1024px){ #grid{grid-template-columns:repeat(4,1fr)} }
-
-.cell{aspect-ratio:2/3}
-.cell.empty{visibility:hidden}
-.bp-card{
-  aspect-ratio:2/3;width:100%;height:100%;
-  transform:scale(0);will-change:transform;
-  position:relative;overflow:hidden;background:#0b0b0b;
-  border-radius:2px;
-}
-@media (prefers-reduced-motion:reduce){ .bp-card{will-change:auto;transform:none!important} }
-.bp-card img,.bp-card svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.bp-meta{
-  position:absolute;left:0;right:0;bottom:0;z-index:2;
-  padding:clamp(10px,1.4vw,20px);
-  display:flex;justify-content:space-between;align-items:flex-end;gap:8px;
-  background:linear-gradient(to top,rgba(0,0,0,.82),transparent);
-}
-.bp-meta .n{font-size:clamp(9px,1vw,12px);letter-spacing:-.02em;text-transform:uppercase;color:#fff;opacity:.7}
-.bp-meta .t{font-size:clamp(11px,1.3vw,17px);letter-spacing:-.03em;text-transform:uppercase;color:#fff;line-height:1;text-align:right}
-
-/* gallery intro heading, scrolls with inner wrapper */
-#gallery-head{
-  text-align:center;padding:0 clamp(12px,3vw,48px) clamp(40px,7vh,90px);
-  color:#fff;
-}
-#gallery-head h2{
-  font-size:clamp(2.4rem,11vw,150px);font-weight:600;
-  letter-spacing:-.05em;line-height:.85;text-transform:uppercase;
-}
-#gallery-head p{
-  margin-top:18px;font-size:clamp(.72rem,1.4vw,1rem);
-  letter-spacing:-.02em;text-transform:uppercase;opacity:.55;
-}
-
-/* no-JS / reduced-motion fallback: show a normal scrollable page */
-.nojs #panel{position:relative;transform:none;height:auto}
-.nojs #main-canvas{position:relative;height:100vh}
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
-<div id="scroll-spacer">
+<x-dc>
+<helmet>
+<title>Abhinav Allani — AI/ML Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #0C0C0C; }
+  body { font-family: 'Kanit', sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #D7E2EA; text-decoration: none; }
+  a:hover { color: #ffffff; }
+  ::selection { background: #B600A8; color: #fff; }
+  @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  img { display: block; }
+</style>
+</helmet>
 
-  <!-- Hero portrait -->
-  <div id="main-canvas">
-    <img id="portrait" src="assets/hero.jpg" alt="Abhinav Allani" fetchpriority="high" />
-    <div id="scrim"></div>
-    <div id="spot"></div>
-  </div>
+<div style="background: #0C0C0C; overflow-x: clip; font-family: 'Kanit', sans-serif;">
 
-  <!-- Logo -->
-  <div id="logo" class="fixed-ui blend">
-    <div class="word">abhinav<span class="r">r</span></div>
-  </div>
+  <section style="height: 100vh; min-height: 620px; display: flex; flex-direction: column; overflow: clip; position: relative;">
+    <nav style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 24px 24px 0; position: relative; z-index: 20;">
+      <a href="#about" style="color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; font-size: clamp(0.875rem, 1.6vw, 1.4rem); transition: opacity 0.2s ease;" style-hover="opacity: 0.7;">About</a>
+      <a href="#skills" style="color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; font-size: clamp(0.875rem, 1.6vw, 1.4rem); transition: opacity 0.2s ease;" style-hover="opacity: 0.7;">What I do</a>
+      <a href="#projects" style="color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; font-size: clamp(0.875rem, 1.6vw, 1.4rem); transition: opacity 0.2s ease;" style-hover="opacity: 0.7;">Projects</a>
+      <a href="#lab" style="color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; font-size: clamp(0.875rem, 1.6vw, 1.4rem); transition: opacity 0.2s ease;" style-hover="opacity: 0.7;">Lab</a>
+      <a href="#contact" style="color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; font-size: clamp(0.875rem, 1.6vw, 1.4rem); transition: opacity 0.2s ease;" style-hover="opacity: 0.7;">Contact</a>
+    </nav>
 
-  <!-- Caption -->
-  <div id="caption" class="fixed-ui blend">
-    AI, machine learning &amp; web development. Founder of Choose &amp; Rise — a nonprofit helping students find their path. Building tools that solve problems people actually have. Scroll to open the archive.
-  </div>
-
-  <!-- Nav -->
-  <div id="nav" class="fixed-ui blend">
-    <span class="about">ABOUT</span>
-    <a class="burger" href="#outro-buy" aria-label="Menu">
-      <svg viewBox="0 0 40 40" fill="none" width="30" height="30"><path d="M0 14H40" stroke="#fff" stroke-width="2.5"/><path d="M0 26H40" stroke="#fff" stroke-width="2.5"/></svg>
-    </a>
-    <a class="cart" href="mailto:abhinavallani02@gmail.com">[ CONTACT ]</a>
-  </div>
-
-  <!-- Identity info (bottom) -->
-  <div id="outro-info" class="fixed-ui blend" data-outro-offset="132">
-    <div class="top">
-      <div id="circle">
-        <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18.75" stroke="#fff" stroke-width="2"/></svg>
-        <span id="circle-symbol">8</span>
-      </div>
-      <div class="label">Archive Collection<br>&ldquo;Abhinav&rdquo;</div>
+    <div style="overflow: hidden; width: 100%; margin-top: 6px;">
+      <h1 style="margin: 0; width: 100%; white-space: nowrap; text-align: center; font-weight: 900; text-transform: uppercase; letter-spacing: -0.035em; line-height: 0.82; font-size: 8.4vw; background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">Hi, i&apos;m abhinav allani</h1>
     </div>
-    <div class="price">AI · ML · WEB</div>
-  </div>
 
-  <!-- connect button -->
-  <div id="outro-buy" class="fixed-ui blend">
-    <a href="mailto:abhinavallani02@gmail.com">connect</a>
-  </div>
-
-  <!-- white overlay -->
-  <div id="outro-overlay"></div>
-
-  <!-- footer -->
-  <div id="outro-footer" class="fixed-ui blend">
-    <span>ABHINAV (R) 2026</span>
-    <span>AURORA, IL</span>
-  </div>
-
-  <!-- Black panel / gallery -->
-  <div id="panel">
-    <div id="panel-inner">
-      <div id="gallery-head">
-        <h2>The Archive</h2>
-        <p>Selected projects · 2025–2026</p>
-      </div>
-      <div id="grid"></div>
+    <div style="margin-top: auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; padding: 0 24px 40px; position: relative; z-index: 20;">
+      <p style="margin: 0; color: #D7E2EA; font-weight: 300; text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.35; font-size: clamp(0.75rem, 1.4vw, 1.5rem); max-width: 280px;">a high school ai/ml engineer building tools students actually use</p>
+      <a href="#contact" style="flex: none; border-radius: 999px; padding: 16px 48px; color: #ffffff; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; font-size: clamp(0.75rem, 1.1vw, 1rem); background: linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%); box-shadow: 0px 4px 4px rgba(181, 1, 167, 0.25), 4px 4px 12px #7721B1 inset; outline: 2px solid #ffffff; outline-offset: -3px;">Contact Me</a>
     </div>
-  </div>
 
+    <div style="position: absolute; left: 50%; bottom: 0; z-index: 10; width: clamp(240px, 26vw, 380px); pointer-events: none; transform: translateX(-50%);">
+      <div style="transform: translate3d({{ magX }}, {{ magY }}, 0); transition: {{ magT }}; will-change: transform;">
+        <img src="uploads/hero.jpeg" alt="Abhinav Allani" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 18%; border-top-left-radius: 999px 420px; border-top-right-radius: 999px 420px; mask-image: linear-gradient(180deg, #000 0%, #000 88%, transparent 100%); -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 88%, transparent 100%);" />
+      </div>
+    </div>
+  </section>
+
+  <section data-marquee="" style="background: #0C0C0C; padding: clamp(96px, 12vw, 160px) 0 40px; overflow: hidden;">
+    <div style="display: flex; flex-direction: column; gap: clamp(12px, 1.6vw, 20px);">
+      <div style="display: flex; align-items: center; gap: clamp(24px, 3vw, 48px); width: max-content; transform: translateX({{ row1x }}); will-change: transform; border-top: 1px solid rgba(215, 226, 234, 0.15); border-bottom: 1px solid rgba(215, 226, 234, 0.15); padding: clamp(14px, 1.8vw, 24px) 0;">
+        <sc-for list="{{ row1 }}" as="g" hint-placeholder-count="12">
+          <span style="flex: none; display: flex; align-items: center; gap: 14px; border: 1px solid rgba(215, 226, 234, 0.28); border-radius: 999px; padding: clamp(12px, 1.4vw, 18px) clamp(20px, 2.2vw, 32px); color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1; font-size: clamp(1rem, 1.8vw, 1.6rem); background: rgba(215, 226, 234, 0.04);"><span style="width: 8px; height: 8px; border-radius: 50%; background: #B600A8; flex: none;"></span>{{ g.name }}</span>
+        </sc-for>
+      </div>
+      <div style="display: flex; align-items: center; gap: clamp(24px, 3vw, 48px); width: max-content; transform: translateX({{ row2x }}); will-change: transform; border-bottom: 1px solid rgba(215, 226, 234, 0.15); padding: clamp(14px, 1.8vw, 24px) 0;">
+        <sc-for list="{{ row2 }}" as="g" hint-placeholder-count="12">
+          <span style="flex: none; display: flex; align-items: center; gap: 14px; border: 1px solid rgba(215, 226, 234, 0.16); border-radius: 999px; padding: clamp(10px, 1.2vw, 16px) clamp(18px, 2vw, 28px); color: rgba(215, 226, 234, 0.78); font-weight: 300; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1; font-size: clamp(0.85rem, 1.3vw, 1.2rem);"><span style="width: 7px; height: 7px; background: #BE4C00; transform: rotate(45deg); flex: none;"></span>{{ g.name }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" style="position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(36px, 5vw, 60px); padding: 80px 20px; overflow: hidden;">
+    <div style="position: absolute; top: 6%; left: 5%; width: clamp(110px, 14vw, 190px); aspect-ratio: 1; border: 1px solid rgba(215, 226, 234, 0.22); border-radius: 50%; background: radial-gradient(circle at 32% 28%, rgba(182, 0, 168, 0.35), transparent 62%); pointer-events: none;"></div>
+    <div style="position: absolute; bottom: 10%; left: 11%; width: clamp(90px, 12vw, 160px); aspect-ratio: 1; border: 1px solid rgba(215, 226, 234, 0.18); background: radial-gradient(circle at 70% 70%, rgba(118, 33, 176, 0.4), transparent 60%); transform: rotate(24deg); pointer-events: none;"></div>
+    <div style="position: absolute; top: 7%; right: 5%; width: clamp(110px, 14vw, 190px); aspect-ratio: 1; border: 1px solid rgba(215, 226, 234, 0.18); background: radial-gradient(circle at 30% 70%, rgba(190, 76, 0, 0.35), transparent 62%); transform: rotate(-14deg); pointer-events: none;"></div>
+    <div style="position: absolute; bottom: 9%; right: 10%; width: clamp(120px, 15vw, 200px); aspect-ratio: 1; border: 1px solid rgba(215, 226, 234, 0.22); border-radius: 50%; background: radial-gradient(circle at 60% 40%, rgba(182, 0, 168, 0.28), transparent 60%); pointer-events: none;"></div>
+
+    <h2 style="margin: 0; text-align: center; font-weight: 900; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.03em; font-size: clamp(3rem, 12vw, 160px); background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">About me</h2>
+
+    <p data-reveal="" style="margin: 0; position: relative; z-index: 5; color: #D7E2EA; font-weight: 500; text-align: center; line-height: 1.7; max-width: 600px; font-size: clamp(1rem, 2vw, 1.35rem);"><sc-for list="{{ chars }}" as="c" hint-placeholder-count="70"><span style="opacity: {{ c.o }};">{{ c.ch }}</span></sc-for></p>
+
+    <div style="position: relative; z-index: 5; display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: clamp(12px, 3vw, 32px);">
+      <a href="#contact" style="border-radius: 999px; padding: 16px 48px; color: #ffffff; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; font-size: clamp(0.75rem, 1.1vw, 1rem); background: linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%); box-shadow: 0px 4px 4px rgba(181, 1, 167, 0.25), 4px 4px 12px #7721B1 inset; outline: 2px solid #ffffff; outline-offset: -3px;">Contact Me</a>
+      <a href="uploads/Resume.pdf.pdf" target="_blank" style="border-radius: 999px; border: 2px solid #D7E2EA; color: #D7E2EA; padding: 14px 44px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; font-size: clamp(0.75rem, 1.1vw, 1rem); transition: background 0.2s ease;" style-hover="background: rgba(215, 226, 234, 0.1);">Résumé</a>
+    </div>
+
+    <div style="position: relative; z-index: 5; width: min(1040px, 100%); display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px; background: rgba(215, 226, 234, 0.18); border: 1px solid rgba(215, 226, 234, 0.18); margin-top: clamp(20px, 3vw, 40px);">
+      <sc-for list="{{ facts }}" as="f" hint-placeholder-count="4">
+        <div style="background: #0C0C0C; padding: clamp(18px, 2vw, 26px); display: flex; flex-direction: column; gap: 8px; text-align: left;">
+          <span style="color: rgba(215, 226, 234, 0.45); font-weight: 300; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.66rem;">{{ f.k }}</span>
+          <span style="color: #D7E2EA; font-weight: 500; line-height: 1.35; font-size: clamp(0.9rem, 1.2vw, 1.05rem);">{{ f.v }}</span>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="position: relative; z-index: 5; width: min(1040px, 100%); display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(14px, 1.8vw, 24px); margin-top: clamp(16px, 2vw, 28px);">
+      <sc-for list="{{ skillGroups }}" as="g" hint-placeholder-count="4">
+        <div style="flex: 1 1 230px; max-width: 320px; text-align: left; border: 1px solid rgba(215, 226, 234, 0.2); border-radius: 28px; padding: clamp(20px, 2.2vw, 28px); background: linear-gradient(160deg, rgba(215, 226, 234, 0.07), rgba(215, 226, 234, 0.02)); display: flex; flex-direction: column; gap: 10px; animation: floaty {{ g.dur }} ease-in-out infinite; animation-delay: {{ g.delay }};">
+          <span style="color: #B600A8; font-weight: 500; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.68rem;">{{ g.label }}</span>
+          <span style="color: #D7E2EA; font-weight: 300; line-height: 1.55; font-size: clamp(0.9rem, 1.2vw, 1.05rem);">{{ g.items }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="skills" style="background: #FFFFFF; border-top-left-radius: clamp(40px, 5vw, 60px); border-top-right-radius: clamp(40px, 5vw, 60px); padding: clamp(80px, 10vw, 128px) 20px;">
+    <h2 style="margin: 0 0 clamp(64px, 8vw, 112px); text-align: center; color: #0C0C0C; font-weight: 900; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.03em; font-size: clamp(3rem, 12vw, 160px);">What I do</h2>
+    <div style="max-width: 1024px; margin: 0 auto; display: flex; flex-direction: column;">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="5">
+        <div style="display: flex; align-items: center; gap: clamp(20px, 4vw, 48px); padding: clamp(32px, 4vw, 48px) 0; border-bottom: 1px solid rgba(12, 12, 12, 0.15);">
+          <span style="flex: none; color: #0C0C0C; font-weight: 900; line-height: 0.85; font-size: clamp(3rem, 10vw, 140px);">{{ s.num }}</span>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="color: #0C0C0C; font-weight: 500; text-transform: uppercase; line-height: 1.1; font-size: clamp(1rem, 2.2vw, 2.1rem);">{{ s.name }}</span>
+            <span style="color: #0C0C0C; opacity: 0.6; font-weight: 300; line-height: 1.7; max-width: 42rem; font-size: clamp(0.85rem, 1.6vw, 1.25rem);">{{ s.text }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="projects" style="position: relative; z-index: 10; background: #0C0C0C; border-top-left-radius: clamp(40px, 5vw, 60px); border-top-right-radius: clamp(40px, 5vw, 60px); margin-top: -56px; padding: clamp(80px, 10vw, 128px) 20px clamp(60px, 8vw, 100px);">
+    <h2 style="margin: 0 0 clamp(48px, 6vw, 80px); text-align: center; font-weight: 900; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.03em; font-size: clamp(3rem, 12vw, 160px); background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">Projects</h2>
+    <div style="max-width: 1400px; margin: 0 auto;">
+      <sc-for list="{{ projects }}" as="p" hint-placeholder-count="3">
+        <div style="height: 85vh; min-height: 660px; display: flex; align-items: flex-start; justify-content: center; position: sticky; top: {{ p.top }};">
+          <div data-card="" style="width: 100%; border-radius: clamp(40px, 5vw, 60px); border: 2px solid #D7E2EA; background: #0C0C0C; padding: clamp(16px, 2.4vw, 32px); transform: scale({{ p.scale }}); transform-origin: top center; transition: transform 0.12s linear;">
+            <div style="display: flex; align-items: center; gap: clamp(16px, 3vw, 40px); flex-wrap: wrap; padding-bottom: clamp(16px, 2vw, 28px);">
+              <span style="color: #D7E2EA; font-weight: 900; line-height: 0.85; font-size: clamp(2.5rem, 6vw, 96px);">{{ p.num }}</span>
+              <div style="display: flex; flex-direction: column; gap: 6px; margin-right: auto;">
+                <span style="color: #D7E2EA; opacity: 0.55; font-weight: 300; text-transform: uppercase; letter-spacing: 0.18em; font-size: clamp(0.7rem, 1vw, 0.9rem);">{{ p.category }}</span>
+                <span style="color: #D7E2EA; font-weight: 500; text-transform: uppercase; line-height: 1.1; font-size: clamp(1.1rem, 2.4vw, 2.1rem);">{{ p.name }}</span>
+              </div>
+              <a href="{{ p.href }}" target="_blank" style="flex: none; border-radius: 999px; border: 2px solid #D7E2EA; color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; padding: 14px 40px; font-size: clamp(0.8rem, 1.1vw, 1rem); transition: background 0.2s ease;" style-hover="background: rgba(215, 226, 234, 0.1);">{{ p.cta }}</a>
+            </div>
+            <div style="display: grid; grid-template-columns: 38% 62%; gap: clamp(10px, 1.4vw, 18px); align-items: stretch;">
+              <div style="display: flex; flex-direction: column; gap: clamp(10px, 1.4vw, 18px);">
+                <div style="border-radius: clamp(32px, 4vw, 48px); border: 1px solid rgba(215, 226, 234, 0.25); padding: clamp(20px, 2.4vw, 32px); display: flex; flex-direction: column; gap: 12px; flex: 1;">
+                  <span style="color: #D7E2EA; opacity: 0.5; font-weight: 300; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.75rem;">Overview</span>
+                  <span style="color: #D7E2EA; font-weight: 300; line-height: 1.6; font-size: clamp(0.85rem, 1.2vw, 1.05rem);">{{ p.overview }}</span>
+                </div>
+                <div style="border-radius: clamp(32px, 4vw, 48px); background: linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%); padding: clamp(20px, 2.4vw, 32px); display: flex; flex-direction: column; gap: 12px;">
+                  <span style="color: #ffffff; opacity: 0.75; font-weight: 300; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.75rem;">Role &amp; stack</span>
+                  <span style="color: #ffffff; font-weight: 500; line-height: 1.5; font-size: clamp(0.85rem, 1.2vw, 1.05rem);">{{ p.role }}</span>
+                  <span style="color: #ffffff; opacity: 0.85; font-weight: 300; line-height: 1.5; font-size: clamp(0.8rem, 1.1vw, 0.95rem);">{{ p.stack }}</span>
+                </div>
+              </div>
+              <img src="{{ p.shot }}" alt="{{ p.name }}" loading="lazy" style="width: 100%; height: 100%; min-height: clamp(280px, 34vw, 520px); object-fit: cover; object-position: top center; border-radius: clamp(40px, 5vw, 60px); background: #17171a; border: 1px solid rgba(215, 226, 234, 0.25);" />
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="lab" style="background: #0C0C0C; padding: clamp(70px, 9vw, 120px) 20px clamp(60px, 7vw, 100px);">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: clamp(36px, 5vw, 64px);">
+        <h2 style="margin: 0; font-weight: 900; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.03em; font-size: clamp(2.6rem, 9vw, 120px); background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">The lab</h2>
+        <span style="color: rgba(215, 226, 234, 0.5); font-weight: 300; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.75rem; max-width: 300px;">Smaller technical builds — five things I made to learn something specific</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(14px, 1.6vw, 20px);">
+        <sc-for list="{{ labs }}" as="l" hint-placeholder-count="5">
+          <div style="border: 1px solid rgba(215, 226, 234, 0.22); border-radius: 32px; padding: clamp(24px, 2.6vw, 34px); display: flex; flex-direction: column; gap: 12px; min-height: 260px; background: linear-gradient(165deg, rgba(215, 226, 234, 0.06), rgba(215, 226, 234, 0.015));">
+            <span style="color: #D7E2EA; font-weight: 900; line-height: 0.85; font-size: clamp(2rem, 3.4vw, 3.2rem); opacity: 0.35;">{{ l.num }}</span>
+            <span style="color: #B600A8; font-weight: 500; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.68rem;">{{ l.tag }}</span>
+            <span style="color: #D7E2EA; font-weight: 500; text-transform: uppercase; line-height: 1.15; font-size: clamp(1.05rem, 1.6vw, 1.5rem);">{{ l.name }}</span>
+            <span style="color: rgba(215, 226, 234, 0.68); font-weight: 300; line-height: 1.6; font-size: clamp(0.85rem, 1.15vw, 1rem);">{{ l.text }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" style="background: #FFFFFF; border-top-left-radius: clamp(40px, 5vw, 60px); border-top-right-radius: clamp(40px, 5vw, 60px); padding: clamp(80px, 10vw, 128px) 20px;">
+    <h2 style="margin: 0 0 clamp(48px, 7vw, 96px); text-align: center; color: #0C0C0C; font-weight: 900; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.03em; font-size: clamp(2.6rem, 10vw, 140px);">Experience</h2>
+    <div style="max-width: 1024px; margin: 0 auto; display: flex; flex-direction: column;">
+      <sc-for list="{{ experience }}" as="e" hint-placeholder-count="3">
+        <div style="display: flex; align-items: flex-start; gap: clamp(20px, 4vw, 48px); padding: clamp(28px, 3.5vw, 44px) 0; border-bottom: 1px solid rgba(12, 12, 12, 0.15);">
+          <span style="flex: none; color: #0C0C0C; font-weight: 900; line-height: 0.85; font-size: clamp(2.4rem, 7vw, 96px);">{{ e.num }}</span>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="color: #0C0C0C; opacity: 0.5; font-weight: 400; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.72rem;">{{ e.period }}</span>
+            <span style="color: #0C0C0C; font-weight: 500; text-transform: uppercase; line-height: 1.15; font-size: clamp(1rem, 2vw, 1.8rem);">{{ e.role }}</span>
+            <span style="color: #0C0C0C; opacity: 0.6; font-weight: 300; line-height: 1.7; max-width: 42rem; font-size: clamp(0.85rem, 1.5vw, 1.15rem);">{{ e.text }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="max-width: 1024px; margin: clamp(56px, 7vw, 88px) auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(32px, 5vw, 64px);">
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <span style="color: #0C0C0C; font-weight: 500; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.75rem;">Certifications</span>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <sc-for list="{{ certs }}" as="c" hint-placeholder-count="6">
+            <span style="border: 1px solid rgba(12, 12, 12, 0.25); border-radius: 999px; padding: 9px 18px; color: #0C0C0C; font-weight: 300; font-size: clamp(0.8rem, 1.1vw, 0.95rem);">{{ c.name }}</span>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <span style="color: #0C0C0C; font-weight: 500; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.75rem;">Activities</span>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <sc-for list="{{ activities }}" as="a" hint-placeholder-count="4">
+            <span style="background: #0C0C0C; border-radius: 999px; padding: 9px 18px; color: #FFFFFF; font-weight: 300; font-size: clamp(0.8rem, 1.1vw, 0.95rem);">{{ a.name }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="border-top-left-radius: clamp(40px, 5vw, 60px); border-top-right-radius: clamp(40px, 5vw, 60px); margin-top: -56px; position: relative; z-index: 10; background: #0C0C0C; padding: clamp(70px, 9vw, 130px) 24px clamp(36px, 4vw, 56px); display: flex; flex-direction: column; align-items: center; gap: clamp(24px, 4vw, 40px); text-align: center;">
+    <h2 style="margin: 0; font-weight: 900; text-transform: uppercase; line-height: 0.88; letter-spacing: -0.03em; font-size: clamp(2.6rem, 11vw, 150px); background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">Let&apos;s talk</h2>
+    <p style="margin: 0; color: #D7E2EA; font-weight: 300; line-height: 1.7; max-width: 560px; font-size: clamp(0.95rem, 1.6vw, 1.2rem);">Looking for internships and summer program opportunities where I can apply this to real projects — and always open to research collaborations and building things with other students.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
+      <a href="mailto:abhinavallani02@gmail.com" style="border-radius: 999px; padding: 16px 48px; color: #ffffff; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; font-size: clamp(0.75rem, 1.1vw, 1rem); background: linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%); box-shadow: 0px 4px 4px rgba(181, 1, 167, 0.25), 4px 4px 12px #7721B1 inset; outline: 2px solid #ffffff; outline-offset: -3px;">Email me</a>
+      <a href="uploads/Resume.pdf.pdf" target="_blank" style="border-radius: 999px; border: 2px solid #D7E2EA; color: #D7E2EA; padding: 14px 44px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; font-size: clamp(0.75rem, 1.1vw, 1rem); transition: background 0.2s ease;" style-hover="background: rgba(215, 226, 234, 0.1);">Download résumé</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: clamp(20px, 3vw, 40px); width: min(1000px, 100%); text-align: left; margin-top: clamp(16px, 2vw, 32px);">
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span style="color: rgba(215, 226, 234, 0.45); font-weight: 300; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.66rem;">Email</span>
+        <a href="mailto:abhinavallani02@gmail.com" style="color: #D7E2EA; font-weight: 500; font-size: clamp(0.95rem, 1.3vw, 1.15rem);">abhinavallani02@gmail.com</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span style="color: rgba(215, 226, 234, 0.45); font-weight: 300; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.66rem;">Phone</span>
+        <a href="tel:+17402726394" style="color: #D7E2EA; font-weight: 500; font-size: clamp(0.95rem, 1.3vw, 1.15rem);">(740) 272-6394</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span style="color: rgba(215, 226, 234, 0.45); font-weight: 300; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.66rem;">LinkedIn</span>
+        <a href="https://linkedin.com/in/abhinav-allani-1a9207389" target="_blank" style="color: #D7E2EA; font-weight: 500; font-size: clamp(0.95rem, 1.3vw, 1.15rem);">abhinav-allani ↗</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span style="color: rgba(215, 226, 234, 0.45); font-weight: 300; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.66rem;">Site</span>
+        <a href="https://choose-and-rise.pages.dev" target="_blank" style="color: #D7E2EA; font-weight: 500; font-size: clamp(0.95rem, 1.3vw, 1.15rem);">choose-and-rise.pages.dev ↗</a>
+      </div>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; padding-top: 24px; border-top: 1px solid rgba(215, 226, 234, 0.15); width: min(900px, 100%); margin-top: 24px; color: rgba(215, 226, 234, 0.5); font-weight: 300; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.7rem;">
+      <span>© 2026 Abhinav Allani</span>
+      <span>Aurora, Illinois</span>
+      <span>Metea Valley High School</span>
+    </div>
+  </section>
 </div>
 
-<script>
-(function(){
-'use strict';
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440},&quot;marqueeSpeed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.3,&quot;min&quot;:0,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;magnetOn&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  state = { scrollY: 0, vh: 800, mx: 0, my: 0, magnetOn: false, cards: [], revealTop: 99999, revealH: 1 };
 
-const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const desktop = matchMedia('(hover:hover) and (pointer:fine)').matches;
-
-/* ─────────── Project data ───────────
-   img: real file if you have one (falls back to generated art if it 404s).
-   hue: seed for generated visual [h1,h2,h3]. */
-const PROJECTS = [
-  { t:'Choose &amp; Rise', cat:'Founder', img:'assets/gallery/choose-and-rise.jpg', hue:[290,320,268], kind:'mesh' },
-  { t:'SilentHelp',        cat:'Wellness · AI', img:'assets/gallery/silenthelp.jpg', hue:[200,178,220], kind:'wave' },
-  { t:'Plant Disease Detector', cat:'ML · AgriTech', img:null, hue:[95,140,64], kind:'grid' },
-  { t:'ELL Tutoring',      cat:'Math &amp; Science', img:'assets/gallery/tutoring.jpg', hue:[38,20,54], kind:'mesh' },
-  { t:'Diet Tracker',      cat:'AI · Health', img:null, hue:[24,44,8], kind:'wave' },
-  { t:'Code',              cat:'Building', img:'assets/gallery/code.jpg', hue:[262,300,240], kind:'grid' },
-  { t:'Vision Guide',      cat:'Accessibility', img:null, hue:[262,300,240], kind:'mesh' },
-  { t:'CivicReports',      cat:'Mobile · Civic', img:null, hue:[210,190,230], kind:'grid' },
-  { t:'Social Pipeline',   cat:'Automation', img:null, hue:[330,18,296], kind:'wave' },
-  { t:'Pulse Research',    cat:'AI/ML Research', img:null, hue:[168,140,196], kind:'mesh' },
-];
-
-/* ─── Generated SVG art (reused from the archive aesthetic) ─── */
-function art(hue, seed, kind){
-  const [h1,h2,h3]=hue, uid='g'+seed;
-  if(kind==='mesh'){
-    let d='',l='';
-    for(let i=0;i<24;i++){const x=(i*61)%100,y=(i*37+13)%100,r=(1+((i*7)%3))*.7;
-      d+=`<circle cx="${x}" cy="${y}" r="${r}" fill="hsl(${h3} 55% 86%)" opacity="${.22+((i%4)*.16)}"/>`;}
-    for(let i=0;i<11;i++){const x1=(i*61)%100,y1=(i*37+13)%100,x2=((i+3)*61)%100,y2=((i+3)*37+13)%100;
-      l+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="hsl(${h3} 55% 86%)" stroke-width=".35" opacity=".2"/>`;}
-    return `<svg viewBox="0 0 100 150" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="${uid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="hsl(${h1} 68% 20%)"/><stop offset="1" stop-color="hsl(${h2} 64% 8%)"/></linearGradient></defs><rect width="100" height="150" fill="url(#${uid})"/>${l}${d}</svg>`;
+  componentDidMount() {
+    this.measure();
+    this.onScroll = () => {
+      if (this.raf) return;
+      this.raf = requestAnimationFrame(() => {
+        this.raf = null;
+        this.setState({ scrollY: window.scrollY, vh: window.innerHeight });
+      });
+    };
+    this.onResize = () => this.measure();
+    this.onMove = e => {
+      const el = this.portrait();
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      const pad = 150;
+      const inside = Math.abs(e.clientX - cx) < r.width / 2 + pad && Math.abs(e.clientY - cy) < r.height / 2 + pad;
+      if (inside) this.setState({ magnetOn: true, mx: (e.clientX - cx) / 3, my: (e.clientY - cy) / 3 });
+      else if (this.state.magnetOn) this.setState({ magnetOn: false, mx: 0, my: 0 });
+    };
+    window.addEventListener("scroll", this.onScroll, { passive: true });
+    window.addEventListener("resize", this.onResize);
+    window.addEventListener("mousemove", this.onMove, { passive: true });
+    setTimeout(() => this.measure(), 400);
   }
-  if(kind==='wave'){
-    let p='';for(let i=0;i<8;i++){const o=i*13;
-      p+=`<path d="M0 ${40+o} C 25 ${20+o}, 42 ${64+o}, 66 ${40+o} S 92 ${16+o}, 100 ${46+o}" fill="none" stroke="hsl(${h2} 66% ${60-i*3}%)" stroke-width=".9" opacity="${.72-i*.07}"/>`;}
-    return `<svg viewBox="0 0 100 150" preserveAspectRatio="xMidYMid slice"><defs><radialGradient id="${uid}" cx="30%" cy="16%" r="95%"><stop offset="0" stop-color="hsl(${h1} 66% 24%)"/><stop offset="1" stop-color="hsl(${h3} 56% 6%)"/></radialGradient></defs><rect width="100" height="150" fill="url(#${uid})"/>${p}</svg>`;
-  }
-  let c='';for(let y=0;y<12;y++)for(let x=0;x<8;x++){const v=((x*3+y*5+seed)%9)/9;
-    c+=`<rect x="${x*12.5}" y="${y*12.5}" width="12.5" height="12.5" fill="hsl(${h1+v*40} ${44+v*30}% ${9+v*34}%)" opacity="${.34+v*.6}"/>`;}
-  return `<svg viewBox="0 0 100 150" preserveAspectRatio="xMidYMid slice"><rect width="100" height="150" fill="hsl(${h3} 52% 6%)"/>${c}<circle cx="50" cy="75" r="15" fill="none" stroke="hsl(${h2} 66% 80%)" stroke-width=".7" opacity=".5"/></svg>`;
-}
 
-/* ─── Build scattered layout (from spec's buildLayout) ─── */
-function cols(){ const w=innerWidth; return w>=1024?4:w>=640?3:2; }
-function buildLayout(count, c){
-  const rows=[]; let placed=0, r=0;
-  while(placed<count){
-    const row=new Array(c).fill(-1);
-    const a=(r*2+(r%2))%c;
-    row[a]=placed++;
-    if(placed<count && r%3===0){
-      let b=(a+2)%c; if(b===a) b=(a+1)%c;
-      row[b]=placed++;
-    }
-    rows.push(row); r++;
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.onScroll);
+    window.removeEventListener("resize", this.onResize);
+    window.removeEventListener("mousemove", this.onMove);
   }
-  return rows;
-}
 
-const grid=document.getElementById('grid');
-const cardEls=[];
-function renderGrid(){
-  const c=cols();
-  const layout=buildLayout(PROJECTS.length,c);
-  grid.innerHTML='';
-  cardEls.length=0;
-  layout.forEach((row,ri)=>{
-    row.forEach((idx,ci)=>{
-      const cell=document.createElement('div');
-      cell.className='cell';
-      if(idx<0){ cell.classList.add('empty'); grid.appendChild(cell); return; }
-      const p=PROJECTS[idx];
-      const card=document.createElement('div');
-      card.className='bp-card';
-      // transform-origin: left half vs right half
-      card.style.transformOrigin = (ci < c/2) ? 'right bottom' : 'left bottom';
-      const media = p.img
-        ? `<img src="${p.img}" alt="${p.t.replace(/&amp;/g,'and')}" loading="lazy" onerror="this.outerHTML=window.__art(${JSON.stringify(p.hue)},${idx*3+1},'${p.kind}')">`
-        : art(p.hue, idx*3+1, p.kind);
-      card.innerHTML = media +
-        `<div class="bp-meta"><span class="n">${String(idx+1).padStart(2,'0')}</span><span class="t">${p.t}<br>${p.cat}</span></div>`;
-      cell.appendChild(card);
-      grid.appendChild(cell);
-      cardEls.push(card);
+  root() { return document.querySelector("x-dc") || document.body; }
+  portrait() { return this.root().querySelector('img[alt="Abhinav Allani"]'); }
+
+  measure() {
+    const r = this.root();
+    const mq = r.querySelector("[data-marquee]");
+    const rev = r.querySelector("[data-reveal]");
+    const cards = Array.from(r.querySelectorAll("[data-card]")).map(el => {
+      const p = el.parentElement.getBoundingClientRect();
+      return p.top + window.scrollY;
     });
-  });
-}
-window.__art = art; // for onerror fallback
-renderGrid();
+    this.setState({
+      scrollY: window.scrollY,
+      vh: window.innerHeight,
+      marqueeTop: mq ? mq.getBoundingClientRect().top + window.scrollY : 0,
+      revealTop: rev ? rev.getBoundingClientRect().top + window.scrollY : 99999,
+      revealH: rev ? rev.offsetHeight : 1,
+      cards
+    });
+  }
 
-/* ─── Elements ─── */
-const spacer=document.getElementById('scroll-spacer');
-const panel=document.getElementById('panel');
-const inner=document.getElementById('panel-inner');
-const canvas=document.getElementById('main-canvas');
-const portrait=document.getElementById('portrait');
-const overlay=document.getElementById('outro-overlay');
-const footer=document.getElementById('outro-footer');
-const buy=document.getElementById('outro-buy');
-const info=document.getElementById('outro-info');
-const outroOffset=+info.getAttribute('data-outro-offset') || 132;
-const symbolEl=document.getElementById('circle-symbol');
-const logo=document.getElementById('logo');
-const caption=document.getElementById('caption');
-const nav=document.getElementById('nav');
-// hero-only overlays: present on the hero, gone during the gallery, back for outro
-const heroUI=[logo,caption,nav];
-// identity block: present on hero, gone during gallery, back (and it animates) for outro
-function setHeroUI(o){ const s=String(o); for(const el of heroUI) el.style.opacity=s; }
+  renderVals() {
+    const s = this.state;
+    const shots = [
+      "uploads/Choose%20and%20Rise.png",
+      "uploads/Silenthelp.png",
+      "uploads/Math%20and%20Code.png"
+    ];
+    const marqueeTop = ["Python", "JavaScript", "Machine Learning", "HTML & CSS", "Reinforcement Learning", "Generative AI"];
+    const marqueeBottom = ["Cloudflare Pages", "Google Analytics 4", "n8n Automation", "Image Recognition", "Statistics for Data Science", "Project Management", "Leadership"];
+    const loop = (arr, times) => Array.from({ length: arr.length * times }, (_, i) => ({ name: arr[i % arr.length] }));
 
-/* portrait fade-in */
-if(portrait.complete) portrait.classList.add('ready');
-else portrait.addEventListener('load',()=>portrait.classList.add('ready'));
+    const off = (s.scrollY - (s.marqueeTop || 0) + s.vh) * (this.props.marqueeSpeed ?? 0.3);
+    const magnetEnabled = this.props.magnetOn ?? true;
+    const shift = Math.max(0, off - 200);
 
-/* ─── Spacer height ─── */
-let vh=innerHeight, maxScroll=0;
-function measure(){
-  vh=innerHeight;
-  // wrap scroll height = inner content height (padding-top + head + grid)
-  const wrapH=inner.scrollHeight;
-  maxScroll=Math.max(0, wrapH - vh);
-  spacer.style.height=(vh + maxScroll + 2*vh)+'px';
-}
-measure();
+    const text = "I'm a student at Metea Valley High School in Aurora, Illinois, focused on AI, machine learning and web development. I founded Choose & Rise, co-founded a student mental health initiative, teach math and Python for free, and research AI/ML through the Pulse High School Research Program. I care most about building educational tools that actually reach the students who need them.";
+    const start = s.revealTop - s.vh * 0.8;
+    const end = s.revealTop + s.revealH - s.vh * 0.2;
+    const prog = Math.min(1, Math.max(0, (s.scrollY - start) / Math.max(1, end - start)));
+    const lit = prog * text.length;
+    const chars = text.split("").map((ch, i) => ({ ch, o: i < lit ? 1 : 0.2 }));
 
-/* ─── Symbol randomiser (throttled 80ms) ─── */
-const SYMS=['8','$','^^','%','/'];
-let lastSym=0, symIdx=0;
-function tickSymbol(now){
-  if(now-lastSym>80){
-    lastSym=now;
-    symIdx=(symIdx + 1 + Math.floor((now/97)%SYMS.length)) % SYMS.length;
-    symbolEl.textContent=SYMS[symIdx];
+    const data = [
+      {
+        category: "Founder & Developer — Jan 2026 — Present",
+        name: "Choose & Rise",
+        href: "https://choose-and-rise.pages.dev",
+        overview: "A nonprofit educational platform helping high schoolers explore colleges, majors and career pathways — admission odds, vocab practice, a planner, and Nova, an AI study coach. Free for every US student.",
+        role: "Founder · Developer · Product",
+        stack: "HTML · CSS · JavaScript · Cloudflare Pages · GA4",
+        shot: shots[0]
+      },
+      {
+        category: "Co-founder — 2026 — Present",
+        name: "SilentHelp",
+        href: "mailto:abhinavallani02@gmail.com?subject=SilentHelp",
+        cta: "Ask for a demo",
+        overview: "A student-focused mental health initiative supporting peer wellness. Signals are read on-device and point toward real human support the moment it matters — nothing leaves the machine.",
+        role: "Co-founder · Lead AI/ML Engineer · PM",
+        stack: "Python · NLP · On-device inference · Safety guardrails",
+        shot: shots[1]
+      },
+      {
+        category: "Founder — instructor, 2025 — Present",
+        name: "Math & Code Academy",
+        href: "https://forms.gle/GBiYeFYXXNasoQRW7",
+        cta: "Register",
+        overview: "A free program teaching Pre-Algebra, Algebra 1, Geometry, Algebra 2 and Python from the basics — no cost, no prerequisites. I write the curriculum, teach the sessions, and keep every unit project-first: students finish a topic by building something with it rather than by passing a worksheet. It grew out of tutoring ELL students in math and science at Metea Valley, where the pattern was obvious — the gap is rarely ability, it's access to someone who will explain it a second way. Registration is open to any student who wants in.",
+        role: "Founder · Curriculum · Instructor",
+        stack: "Python · Curriculum design · Teaching",
+        shot: shots[2]
+      }
+    ];
+
+    const total = data.length;
+    const projects = data.map((p, i) => {
+      const top = s.cards[i] || 0;
+      const next = s.cards[i + 1];
+      let scale = 1;
+      if (next) {
+        const t = Math.min(1, Math.max(0, (s.scrollY - (top - 120)) / Math.max(1, next - top)));
+        const target = 1 - (total - 1 - i) * 0.03;
+        scale = 1 + (target - 1) * t;
+      }
+      return {
+        ...p,
+        num: "0" + (i + 1),
+        cta: p.cta || "Live project",
+        top: 96 + i * 28 + "px",
+        scale: scale.toFixed(4)
+      };
+    });
+
+    return {
+      row1: loop(marqueeTop, 4),
+      row2: loop(marqueeBottom, 4),
+      row1x: shift + "px",
+      row2x: -shift + "px",
+      magX: (magnetEnabled ? s.mx : 0).toFixed(1) + "px",
+      magY: (magnetEnabled ? s.my : 0).toFixed(1) + "px",
+      magT: s.magnetOn ? "transform 0.3s ease-out" : "transform 0.6s ease-in-out",
+      chars,
+      projects,
+      facts: [
+        { k: "School", v: "Metea Valley HS — Aurora, IL" },
+        { k: "Class of", v: "2028" },
+        { k: "GPA", v: "3.8 weighted / 3.7 unweighted" },
+        { k: "In progress", v: "AP Computer Science A" }
+      ],
+      skillGroups: [
+        { label: "Programming", items: "Python · JavaScript", dur: "6.5s", delay: "0s" },
+        { label: "Web development", items: "HTML · CSS · responsive site builds · Cloudflare Pages", dur: "7.5s", delay: "0.6s" },
+        { label: "Tools & analytics", items: "Google Analytics 4 · n8n · NVIDIA Nemotron · modern web tooling", dur: "7s", delay: "1.2s" },
+        { label: "Soft skills", items: "Problem-solving · project management · leadership · collaboration · communication", dur: "8s", delay: "1.8s" }
+      ],
+      labs: [
+        { num: "01", name: "CivicReports", tag: "Mobile app", text: "Reporting local civic issues with real-time submission and tracking, built around a workflow simple enough for anyone in the neighborhood to use." },
+        { num: "02", name: "Personal Diet Tracker", tag: "AI health", text: "Photo-based meal analysis — image recognition estimates calories and dietary breakdown from a single picture." },
+        { num: "03", name: "Plant Disease Detector", tag: "ML / AgriTech", text: "A classifier that identifies leaf diseases from uploaded images, making a diagnosis step available without a specialist." },
+        { num: "04", name: "Vision Guide", tag: "Accessibility", text: "High-contrast scan-to-read assistant for visually impaired users, with text enhancement and a readability-first interface." },
+        { num: "05", name: "Social Media Automation", tag: "AI pipeline", text: "An n8n and NVIDIA Nemotron pipeline that generates and schedules content end to end." }
+      ],
+      experience: [
+        { num: "01", role: "High School Researcher — Pulse Research Program", period: "2026 — Present", text: "AI/ML research under mentor guidance: developing and evaluating models for real-world applications, and contributing to experiments, documentation and presentations." },
+        { num: "02", role: "ELL Math & Science Tutor — Metea Valley HS", period: "2025 — Present", text: "Tutoring English Language Learner students in math and science — homework explanation and concept clarification. ELL Tutoring Certification earned." },
+        { num: "03", role: "Community Volunteer", period: "2025 — Present", text: "School and community service initiatives, 8+ hours completed and ongoing." }
+      ],
+      certs: [
+        { name: "Reinforcement Learning — Grade A" },
+        { name: "Python Programming Expert" },
+        { name: "Python Statistics for Data Science — Grade A" },
+        { name: "Generative AI Industry Applications" },
+        { name: "ELL Tutoring Certification" },
+        { name: "Student Government Participation" }
+      ],
+      activities: [
+        { name: "Student Government" },
+        { name: "STEM Talks" },
+        { name: "Computer Club" },
+        { name: "Cricket Club" }
+      ],
+      services: [
+        { num: "01", name: "Machine learning", text: "Building and evaluating models — image classification, recognition pipelines — with the statistics to know when a result is real and not noise." },
+        { num: "02", name: "AI automation", text: "Agent and automation pipelines with n8n and open models, built so failure modes show up early instead of silently." },
+        { num: "03", name: "Web development", text: "Taking an idea to a live site people can open: HTML, CSS, JavaScript, deployed on Cloudflare Pages with analytics wired in." },
+        { num: "04", name: "Reinforcement learning", text: "Coursework and research in RL — reward shaping, evaluation, and the stability problems that show up across training runs." },
+        { num: "05", name: "Teaching", text: "Free math and Python instruction, plus ELL tutoring in math and science at school — built around problems rather than lectures." }
+      ]
+    };
   }
 }
 
-/* ─── Card scale computation ─── */
-function scaleCards(panelTop){
-  const H=vh;
-  for(const card of cardEls){
-    const r=card.getBoundingClientRect();
-    // account for the panel's own translate if fixed at top vs sliding
-    const top=r.top, bottom=r.bottom;
-    let s;
-    if(bottom<=0 || top>=H){ s=0; }
-    else{
-      const enter=Math.min(1,(H-top)/(H*0.6));
-      const exit=Math.min(1,bottom/(H*0.4));
-      s=Math.max(0,Math.min(enter,exit));
-    }
-    card.style.transform='scale('+s.toFixed(4)+')';
-  }
-}
-
-/* ─── Main RAF loop ─── */
-let mx=innerWidth*0.7, my=innerHeight*0.35, tmx=mx, tmy=my;
-function frame(now){
-  const y=scrollY;
-
-  tickSymbol(now);
-
-  // Phase 1: panel slides up over first vh
-  if(y<=vh){
-    const p=y/vh;                     // 0..1
-    panel.style.transform='translateY('+((1-p)*vh)+'px)';
-    inner.style.transform='translateY(0)';
-    // hero visible; parallax portrait toward cursor
-    canvas.style.visibility='visible';
-    portrait.style.transform='scale(1.06) translate('+((mx/innerWidth-0.5)*-16)+'px,'+((my/innerHeight-0.5)*-12)+'px)';
-    overlay.style.opacity='0';
-    footer.style.opacity='0';
-    buy.style.transform='scale(0)';
-    info.style.transform='translateY(0)';
-    canvas.style.opacity=String(1-p*0.9);
-    // hero-only overlays + identity block fade out as the panel closes over the hero
-    const heroFade=Math.max(0,1-p*1.4);
-    setHeroUI(heroFade);
-    info.style.opacity=String(heroFade);
-  } else {
-    // Phase 2: panel fixed, inner scrolls up
-    panel.style.transform='translateY(0)';
-    const past=y-vh;                  // 0..maxScroll (then outro)
-    const innerY=Math.min(past,maxScroll);
-    inner.style.transform='translateY('+(-innerY)+'px)';
-    canvas.style.visibility='hidden';
-
-    // Outro after inner fully scrolled
-    if(past>maxScroll){
-      const op=Math.min(1,(past-maxScroll)/(vh-100));
-      overlay.style.opacity=String(op);
-      footer.style.opacity=String(op);
-      buy.style.transform='scale('+op.toFixed(3)+')';
-      info.style.transform='translateY('+(-outroOffset*op)+'px)';
-      info.style.opacity=String(op);          // identity block returns for the outro
-      setHeroUI(op);                            // logo/caption/nav return, now dark-on-white
-      buy.style.pointerEvents = op>0.5?'auto':'none';
-    } else {
-      overlay.style.opacity='0';
-      footer.style.opacity='0';
-      buy.style.transform='scale(0)';
-      info.style.transform='translateY(0)';
-      info.style.opacity='0';                   // hidden during the gallery
-      setHeroUI(0);                             // hero UI stays out of the gallery
-      buy.style.pointerEvents='none';
-    }
-  }
-
-  // scale gallery cards every frame (they're on screen in phase 1 tail + phase 2)
-  if(y>vh*0.5) scaleCards();
-
-  // smooth cursor spotlight
-  mx+=(tmx-mx)*0.12; my+=(tmy-my)*0.12;
-  canvas.style.setProperty('--mx',(mx/innerWidth*100).toFixed(1)+'%');
-  canvas.style.setProperty('--my',(my/innerHeight*100).toFixed(1)+'%');
-
-  requestAnimationFrame(frame);
-}
-
-/* ─── Cursor ─── */
-if(desktop && !reduced){
-  const cursor=document.createElement('div');
-  cursor.id='cursor';
-  cursor.innerHTML='<svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22.75" stroke="#fff" stroke-width="2.5"/><path d="M24 13 L24 35 M15 20 L33 28 M33 20 L15 28" stroke="#fff" stroke-width="1.6"/></svg>';
-  document.body.appendChild(cursor);
-  const spot=document.getElementById('spot');
-  addEventListener('mousemove',(e)=>{
-    cursor.style.left=e.clientX+'px';
-    cursor.style.top=e.clientY+'px';
-    tmx=e.clientX; tmy=e.clientY;
-    spot.classList.add('on');
-  },{passive:true});
-}
-
-/* ─── Reduced motion / graceful fallback ─── */
-if(reduced){
-  // static: show hero then a simple scrollable gallery
-  document.documentElement.classList.add('nojs');
-  panel.style.position='relative';
-  panel.style.transform='none';
-  cardEls.forEach(c=>c.style.transform='none');
-  canvas.style.position='relative';
-} else {
-  requestAnimationFrame(frame);
-}
-
-addEventListener('resize',()=>{ renderGrid(); measure(); },{passive:true});
-addEventListener('load',()=>{ renderGrid(); measure(); });
-
-})();
 </script>
 </body>
 </html>
