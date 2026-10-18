@@ -1,14 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abhinav Allani — Aspiring Data Scientist &amp; Business Analyst</title>
+<meta name="description" content="Abhinav Allani — high school student (Class of 2028) exploring data science, business analytics, statistics and applied AI. Founder of Choose &amp; Rise, co-founder of SilentHelp.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Abhinav Allani — Aspiring Data Scientist &amp; Business Analyst">
+<meta property="og:description" content="Data science, business analytics and applied AI — projects, research and teaching by a high school student in Aurora, Illinois.">
+<meta property="og:image" content="uploads/hero.jpeg">
+<meta name="twitter:card" content="summary">
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<title>Abhinav Allani — AI/ML Engineer</title>
+<title>Abhinav Allani — Aspiring Data Scientist &amp; Business Analyst</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -21,37 +28,63 @@
   ::selection { background: #2E7FBF; color: #fff; }
   @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
   img { display: block; }
+  @keyframes statusPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(79, 209, 224, 0.55); } 50% { box-shadow: 0 0 0 5px rgba(79, 209, 224, 0); } }
+  a:focus-visible { outline: 2px solid #4FD1E0 !important; outline-offset: 3px !important; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .skip-link { position: absolute; left: 16px; top: -60px; z-index: 100; background: #D7E2EA; color: #0C0C0C; padding: 10px 18px; border-radius: 999px; font-weight: 500; }
+  .skip-link:focus { top: 16px; color: #0C0C0C; }
+  [data-nav] a { white-space: nowrap; }
+  @media (max-width: 720px) {
+    [data-nav] { padding: 20px 16px 0 !important; gap: 10px !important; }
+    [data-nav] a { font-size: 0.75rem !important; letter-spacing: 0.03em !important; }
+    [data-hero-foot] { flex-direction: column !important; align-items: flex-start !important; gap: 20px !important; padding-bottom: 28px !important; }
+    [data-hero-portrait] { width: 168px !important; top: 36% !important; }
+    [data-card-grid] { grid-template-columns: 1fr !important; }
+    [data-card-shot] { height: 180px !important; }
+    [data-card] { transform: none !important; }
+    [data-card-wrap] { height: auto !important; min-height: 0 !important; position: relative !important; top: 0 !important; margin-bottom: 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  }
 </style>
 </helmet>
 
+<a class="skip-link" href="#about">Skip to content</a>
 <div style="background: #0C0C0C; overflow-x: clip; font-family: 'Kanit', sans-serif;">
 
   <section style="height: 100vh; min-height: 620px; display: flex; flex-direction: column; overflow: clip; position: relative;">
-    <nav style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 24px 24px 0; position: relative; z-index: 20;">
+    <nav data-nav="" aria-label="Primary" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 24px 24px 0; position: relative; z-index: 20;">
       <a href="#about" style="color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; font-size: clamp(0.875rem, 1.6vw, 1.4rem); transition: opacity 0.2s ease;" style-hover="opacity: 0.7;">About</a>
       <a href="#skills" style="color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; font-size: clamp(0.875rem, 1.6vw, 1.4rem); transition: opacity 0.2s ease;" style-hover="opacity: 0.7;">What I do</a>
       <a href="#projects" style="color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; font-size: clamp(0.875rem, 1.6vw, 1.4rem); transition: opacity 0.2s ease;" style-hover="opacity: 0.7;">Projects</a>
-      <a href="#lab" style="color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; font-size: clamp(0.875rem, 1.6vw, 1.4rem); transition: opacity 0.2s ease;" style-hover="opacity: 0.7;">Lab</a>
+      <a href="#lab" style="color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; font-size: clamp(0.875rem, 1.6vw, 1.4rem); transition: opacity 0.2s ease;" style-hover="opacity: 0.7;">Data Lab</a>
       <a href="#contact" style="color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; font-size: clamp(0.875rem, 1.6vw, 1.4rem); transition: opacity 0.2s ease;" style-hover="opacity: 0.7;">Contact</a>
     </nav>
 
     <div style="overflow: hidden; width: 100%; margin-top: 6px;">
-      <h1 style="margin: 0; width: 100%; white-space: nowrap; text-align: center; font-weight: 900; text-transform: uppercase; letter-spacing: -0.035em; line-height: 0.82; font-size: 8.4vw; background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">Hi, i&apos;m abhinav allani</h1>
+      <h1 style="margin: 0; width: 100%; white-space: nowrap; text-align: center; font-weight: 900; text-transform: uppercase; letter-spacing: -0.035em; line-height: 0.82; font-size: 8.1vw; background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">Hi, i&apos;m abhinav allani.</h1>
     </div>
 
-    <div style="margin-top: auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; padding: 0 24px 40px; position: relative; z-index: 20;">
-      <p style="margin: 0; color: #D7E2EA; font-weight: 300; text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.35; font-size: clamp(0.75rem, 1.4vw, 1.5rem); max-width: 280px;">a high school ai/ml engineer building tools students actually use</p>
-      <a href="#contact" style="flex: none; border-radius: 999px; padding: 16px 48px; color: #ffffff; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; font-size: clamp(0.75rem, 1.1vw, 1rem); background: linear-gradient(123deg, #14233F 0%, #1B3A6B 30%, #2E7FBF 65%, #4FD1E0 100%); box-shadow: 0px 4px 4px rgba(46, 127, 191, 0.28), 4px 4px 12px #2E7FBF inset; outline: 2px solid #ffffff; outline-offset: -3px;">Contact Me</a>
+    <div data-hero-foot="" style="margin-top: auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; padding: 0 24px 40px; position: relative; z-index: 20;">
+      <div style="display: flex; flex-direction: column; gap: 12px; max-width: 400px;">
+        <p style="margin: 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.08; font-size: clamp(1.15rem, 2.1vw, 2rem); background: linear-gradient(100deg, #D7E2EA 0%, #4FD1E0 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">Aspiring Data Scientist &amp; Business Analyst</p>
+        <p style="margin: 0; color: rgba(215, 226, 234, 0.78); font-weight: 300; line-height: 1.55; font-size: clamp(0.85rem, 1.05vw, 1.02rem);">A high school student exploring data science, statistical analysis, and applied AI — building intelligent tools that transform information into meaningful insights and practical solutions.</p>
+      </div>
+      <div style="flex: none; display: flex; flex-wrap: wrap; gap: 12px;">
+        <a href="#projects" style="border-radius: 999px; padding: 16px 40px; color: #ffffff; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; font-size: clamp(0.75rem, 1.1vw, 1rem); background: linear-gradient(123deg, #14233F 0%, #1B3A6B 30%, #2E7FBF 65%, #4FD1E0 100%); box-shadow: 0px 4px 4px rgba(46, 127, 191, 0.28), 4px 4px 12px #2E7FBF inset; outline: 2px solid #ffffff; outline-offset: -3px;">Explore my work</a>
+        <a href="#contact" style="border-radius: 999px; border: 2px solid #D7E2EA; color: #D7E2EA; padding: 14px 36px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; font-size: clamp(0.75rem, 1.1vw, 1rem); transition: background 0.2s ease;" style-hover="background: rgba(215, 226, 234, 0.1);">Contact me</a>
+      </div>
     </div>
 
-    <div style="position: absolute; left: 50%; top: 50%; z-index: 5; width: clamp(240px, 24vw, 360px); pointer-events: none; transform: translate(-50%, -50%);">
+    <div data-hero-portrait="" style="position: absolute; left: 50%; top: 50%; z-index: 5; width: clamp(240px, 24vw, 360px); pointer-events: none; transform: translate(-50%, -50%);">
       <img src="uploads/hero.jpeg" alt="Abhinav Allani" style="width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 18%; border-radius: 24px; border: 1px solid rgba(215, 226, 234, 0.18);" />
     </div>
   </section>
 
-  <section data-marquee="" style="background: #0C0C0C; padding: clamp(96px, 12vw, 160px) 0 40px; overflow: hidden;">
+  <section data-marquee="" aria-hidden="true" style="background: #0C0C0C; padding: clamp(96px, 12vw, 160px) 0 40px; overflow: hidden;">
     <div style="display: flex; flex-direction: column; gap: clamp(12px, 1.6vw, 20px);">
-      <div style="display: flex; align-items: center; gap: clamp(24px, 3vw, 48px); width: max-content; transform: translateX({{ row1x }}); will-change: transform; border-top: 1px solid rgba(215, 226, 234, 0.15); border-bottom: 1px solid rgba(215, 226, 234, 0.15); padding: clamp(14px, 1.8vw, 24px) 0;">
+      <div style="display: flex; align-items: center; gap: clamp(24px, 3vw, 48px); width: max-content; transform: translateX(calc({{ row1x }} - 33.333%)); will-change: transform; border-top: 1px solid rgba(215, 226, 234, 0.15); border-bottom: 1px solid rgba(215, 226, 234, 0.15); padding: clamp(14px, 1.8vw, 24px) 0;">
         <sc-for list="{{ row1 }}" as="g" hint-placeholder-count="12">
           <span style="flex: none; display: flex; align-items: center; gap: 14px; border: 1px solid rgba(215, 226, 234, 0.28); border-radius: 999px; padding: clamp(12px, 1.4vw, 18px) clamp(20px, 2.2vw, 32px); color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1; font-size: clamp(1rem, 1.8vw, 1.6rem); background: rgba(215, 226, 234, 0.04);"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2E7FBF; flex: none;"></span>{{ g.name }}</span>
         </sc-for>
@@ -72,11 +105,15 @@
 
     <h2 style="margin: 0; text-align: center; font-weight: 900; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.03em; font-size: clamp(3rem, 12vw, 160px); background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">About me</h2>
 
-    <p data-reveal="" style="margin: 0; position: relative; z-index: 5; color: #D7E2EA; font-weight: 500; text-align: center; line-height: 1.7; max-width: 600px; font-size: clamp(1rem, 2vw, 1.35rem);"><sc-for list="{{ chars }}" as="c" hint-placeholder-count="70"><span style="opacity: {{ c.o }};">{{ c.ch }}</span></sc-for></p>
+    <div data-reveal="" style="position: relative; z-index: 5; max-width: 680px; display: flex; flex-direction: column; gap: 1.1em; font-size: clamp(1rem, 1.8vw, 1.25rem);">
+      <sc-for list="{{ aboutParas }}" as="para" hint-placeholder-count="5">
+        <p style="margin: 0; color: #D7E2EA; font-weight: 500; text-align: left; line-height: 1.7;"><span class="sr-only">{{ para.text }}</span><span aria-hidden="true"><sc-for list="{{ para.chars }}" as="c" hint-placeholder-count="70"><span style="opacity: {{ c.o }};">{{ c.ch }}</span></sc-for></span></p>
+      </sc-for>
+    </div>
 
     <div style="position: relative; z-index: 5; display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: clamp(12px, 3vw, 32px);">
       <a href="#contact" style="border-radius: 999px; padding: 16px 48px; color: #ffffff; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; font-size: clamp(0.75rem, 1.1vw, 1rem); background: linear-gradient(123deg, #14233F 0%, #1B3A6B 30%, #2E7FBF 65%, #4FD1E0 100%); box-shadow: 0px 4px 4px rgba(46, 127, 191, 0.28), 4px 4px 12px #2E7FBF inset; outline: 2px solid #ffffff; outline-offset: -3px;">Contact Me</a>
-      <a href="uploads/Resume.pdf.pdf" target="_blank" style="border-radius: 999px; border: 2px solid #D7E2EA; color: #D7E2EA; padding: 14px 44px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; font-size: clamp(0.75rem, 1.1vw, 1rem); transition: background 0.2s ease;" style-hover="background: rgba(215, 226, 234, 0.1);">Résumé</a>
+      <a href="uploads/Resume.pdf.pdf" target="_blank" rel="noopener" style="border-radius: 999px; border: 2px solid #D7E2EA; color: #D7E2EA; padding: 14px 44px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; font-size: clamp(0.75rem, 1.1vw, 1rem); transition: background 0.2s ease;" style-hover="background: rgba(215, 226, 234, 0.1);">Résumé</a>
     </div>
 
     <div style="position: relative; z-index: 5; width: min(1040px, 100%); display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px; background: rgba(215, 226, 234, 0.18); border: 1px solid rgba(215, 226, 234, 0.18); margin-top: clamp(20px, 3vw, 40px);">
@@ -89,10 +126,15 @@
     </div>
 
     <div style="position: relative; z-index: 5; width: min(1040px, 100%); display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(14px, 1.8vw, 24px); margin-top: clamp(16px, 2vw, 28px);">
+      <h3 class="sr-only">Skills</h3>
       <sc-for list="{{ skillGroups }}" as="g" hint-placeholder-count="4">
         <div style="flex: 1 1 230px; max-width: 320px; text-align: left; border: 1px solid rgba(215, 226, 234, 0.2); border-radius: 28px; padding: clamp(20px, 2.2vw, 28px); background: linear-gradient(160deg, rgba(215, 226, 234, 0.07), rgba(215, 226, 234, 0.02)); display: flex; flex-direction: column; gap: 10px; animation: floaty {{ g.dur }} ease-in-out infinite; animation-delay: {{ g.delay }};">
           <span style="color: #2E7FBF; font-weight: 500; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.68rem;">{{ g.label }}</span>
-          <span style="color: #D7E2EA; font-weight: 300; line-height: 1.55; font-size: clamp(0.9rem, 1.2vw, 1.05rem);">{{ g.items }}</span>
+          <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px;">
+            <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
+              <li style="color: #D7E2EA; font-weight: 300; line-height: 1.4; font-size: clamp(0.9rem, 1.2vw, 1.05rem);">{{ it.name }}</li>
+            </sc-for>
+          </ul>
         </div>
       </sc-for>
     </div>
@@ -117,7 +159,7 @@
     <h2 style="margin: 0 0 clamp(48px, 6vw, 80px); text-align: center; font-weight: 900; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.03em; font-size: clamp(3rem, 12vw, 160px); background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">Projects</h2>
     <div style="max-width: 1400px; margin: 0 auto;">
       <sc-for list="{{ projects }}" as="p" hint-placeholder-count="3">
-        <div style="height: 85vh; min-height: 660px; display: flex; align-items: flex-start; justify-content: center; position: sticky; top: {{ p.top }};">
+        <div data-card-wrap="" style="height: 85vh; min-height: 660px; display: flex; align-items: flex-start; justify-content: center; position: sticky; top: {{ p.top }};">
           <div data-card="" style="width: 100%; border-radius: clamp(40px, 5vw, 60px); border: 2px solid #D7E2EA; background: #0C0C0C; padding: clamp(16px, 2.4vw, 32px); transform: scale({{ p.scale }}); transform-origin: top center; transition: transform 0.12s linear;">
             <div style="display: flex; align-items: center; gap: clamp(16px, 3vw, 40px); flex-wrap: wrap; padding-bottom: clamp(16px, 2vw, 28px);">
               <span style="color: #D7E2EA; font-weight: 900; line-height: 0.85; font-size: clamp(2.5rem, 6vw, 96px);">{{ p.num }}</span>
@@ -125,13 +167,18 @@
                 <span style="color: #D7E2EA; opacity: 0.55; font-weight: 300; text-transform: uppercase; letter-spacing: 0.18em; font-size: clamp(0.7rem, 1vw, 0.9rem);">{{ p.category }}</span>
                 <span style="color: #D7E2EA; font-weight: 500; text-transform: uppercase; line-height: 1.1; font-size: clamp(1.1rem, 2.4vw, 2.1rem);">{{ p.name }}</span>
               </div>
-              <a href="{{ p.href }}" target="_blank" style="flex: none; border-radius: 999px; border: 2px solid #D7E2EA; color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; padding: 14px 40px; font-size: clamp(0.8rem, 1.1vw, 1rem); transition: background 0.2s ease;" style-hover="background: rgba(215, 226, 234, 0.1);">{{ p.cta }}</a>
+              <a href="{{ p.href }}" target="_blank" rel="noopener" style="flex: none; border-radius: 999px; border: 2px solid #D7E2EA; color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; padding: 14px 40px; font-size: clamp(0.8rem, 1.1vw, 1rem); transition: background 0.2s ease;" style-hover="background: rgba(215, 226, 234, 0.1);">{{ p.cta }}</a>
             </div>
-            <div style="display: grid; grid-template-columns: 38% 62%; gap: clamp(10px, 1.4vw, 18px); align-items: stretch;">
+            <div data-card-grid="" style="display: grid; grid-template-columns: 38% 62%; gap: clamp(10px, 1.4vw, 18px); align-items: stretch;">
               <div style="display: flex; flex-direction: column; gap: clamp(10px, 1.4vw, 18px);">
                 <div style="border-radius: clamp(32px, 4vw, 48px); border: 1px solid rgba(215, 226, 234, 0.25); padding: clamp(20px, 2.4vw, 32px); display: flex; flex-direction: column; gap: 12px; flex: 1;">
                   <span style="color: #D7E2EA; opacity: 0.5; font-weight: 300; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.75rem;">Overview</span>
                   <span style="color: #D7E2EA; font-weight: 300; line-height: 1.6; font-size: clamp(0.85rem, 1.2vw, 1.05rem);">{{ p.overview }}</span>
+                  <ul aria-label="Focus areas" style="list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px;">
+                    <sc-for list="{{ p.focus }}" as="f" hint-placeholder-count="5">
+                      <li style="border: 1px solid rgba(215, 226, 234, 0.22); border-radius: 999px; padding: 5px 12px; color: rgba(215, 226, 234, 0.8); font-weight: 300; font-size: clamp(0.7rem, 0.9vw, 0.8rem); line-height: 1.3;">{{ f.name }}</li>
+                    </sc-for>
+                  </ul>
                 </div>
                 <div style="border-radius: clamp(32px, 4vw, 48px); background: linear-gradient(123deg, #14233F 0%, #1B3A6B 30%, #2E7FBF 65%, #4FD1E0 100%); padding: clamp(20px, 2.4vw, 32px); display: flex; flex-direction: column; gap: 12px;">
                   <span style="color: #ffffff; opacity: 0.75; font-weight: 300; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.75rem;">Role &amp; stack</span>
@@ -139,7 +186,7 @@
                   <span style="color: #ffffff; opacity: 0.85; font-weight: 300; line-height: 1.5; font-size: clamp(0.8rem, 1.1vw, 0.95rem);">{{ p.stack }}</span>
                 </div>
               </div>
-              <img src="{{ p.shot }}" alt="{{ p.name }}" loading="lazy" style="width: 100%; height: clamp(320px, 46vh, 560px); object-fit: cover; object-position: top center; border-radius: clamp(40px, 5vw, 60px); background: #17171a; border: 1px solid rgba(215, 226, 234, 0.25);" />
+              <img data-card-shot="" src="{{ p.shot }}" alt="{{ p.alt }}" loading="lazy" style="width: 100%; height: clamp(320px, 46vh, 560px); object-fit: cover; object-position: top center; border-radius: clamp(40px, 5vw, 60px); background: #17171a; border: 1px solid rgba(215, 226, 234, 0.25);" />
             </div>
           </div>
         </div>
@@ -147,20 +194,54 @@
     </div>
   </section>
 
-  <section id="lab" style="position: relative; z-index: 20; background: #0C0C0C; margin-top: 15vh; padding: clamp(70px, 9vw, 120px) 20px clamp(60px, 7vw, 100px);">
+  <section id="building" aria-labelledby="building-title" style="position: relative; z-index: 20; background: #0C0C0C; margin-top: 15vh; padding: clamp(70px, 9vw, 120px) 20px clamp(40px, 5vw, 72px);">
     <div style="max-width: 1200px; margin: 0 auto;">
       <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: clamp(36px, 5vw, 64px);">
-        <h2 style="margin: 0; font-weight: 900; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.03em; font-size: clamp(2.6rem, 9vw, 120px); background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">The lab</h2>
-        <span style="color: rgba(215, 226, 234, 0.5); font-weight: 300; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.75rem; max-width: 300px;">Smaller technical builds — five things I made to learn something specific</span>
+        <h2 id="building-title" style="margin: 0; font-weight: 900; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.03em; font-size: clamp(2.4rem, 7.4vw, 104px); background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">Currently building.</h2>
+        <span style="color: rgba(215, 226, 234, 0.5); font-weight: 300; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.75rem; max-width: 320px;">Exploring data science, business analytics, and predictive modeling through hands-on projects.</span>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(14px, 1.6vw, 20px);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: clamp(14px, 1.6vw, 20px);">
+        <sc-for list="{{ building }}" as="b" hint-placeholder-count="3">
+          <article style="border: 1px solid rgba(215, 226, 234, 0.22); border-radius: 32px; padding: clamp(24px, 2.6vw, 34px); display: flex; flex-direction: column; gap: 14px; background: linear-gradient(165deg, rgba(215, 226, 234, 0.06), rgba(215, 226, 234, 0.015)); transition: border-color 0.25s ease, transform 0.25s ease;" style-hover="border-color: rgba(79, 209, 224, 0.55); transform: translateY(-4px);">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+              <span style="color: #D7E2EA; font-weight: 900; line-height: 0.85; font-size: clamp(2rem, 3.4vw, 3.2rem); opacity: 0.35;">{{ b.num }}</span>
+              <span style="display: inline-flex; align-items: center; gap: 8px; border: 1px solid {{ b.pillBorder }}; border-radius: 999px; padding: 6px 12px; color: {{ b.pillColor }}; font-weight: 400; text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.62rem; line-height: 1;"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; flex: none; background: {{ b.dotFill }}; border: 1px solid {{ b.dotBorder }}; animation: {{ b.dotAnim }};"></span>{{ b.status }}</span>
+            </div>
+            <span style="color: #2E7FBF; font-weight: 500; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.68rem;">{{ b.category }}</span>
+            <h3 style="margin: 0; color: #D7E2EA; font-weight: 500; text-transform: uppercase; line-height: 1.15; font-size: clamp(1.15rem, 1.8vw, 1.6rem);">{{ b.name }}</h3>
+            <p style="margin: 0; color: rgba(215, 226, 234, 0.68); font-weight: 300; line-height: 1.6; font-size: clamp(0.85rem, 1.15vw, 1rem);">{{ b.text }}</p>
+            <div style="margin-top: auto; padding-top: 14px; border-top: 1px solid rgba(215, 226, 234, 0.12); display: flex; flex-direction: column; gap: 10px;">
+              <span style="color: rgba(215, 226, 234, 0.4); font-weight: 300; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.62rem;">Planned technology</span>
+              <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px;">
+                <sc-for list="{{ b.tech }}" as="t" hint-placeholder-count="4">
+                  <li style="border: 1px solid rgba(215, 226, 234, 0.22); border-radius: 999px; padding: 5px 12px; color: rgba(215, 226, 234, 0.85); font-weight: 300; font-size: clamp(0.72rem, 0.9vw, 0.82rem); line-height: 1.3;">{{ t.name }}</li>
+                </sc-for>
+              </ul>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="lab" style="position: relative; z-index: 20; background: #0C0C0C; padding: clamp(40px, 5vw, 72px) 20px clamp(60px, 7vw, 100px);">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: clamp(36px, 5vw, 64px);">
+        <h2 style="margin: 0; font-weight: 900; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.03em; font-size: clamp(2.6rem, 9vw, 120px); background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">The data lab</h2>
+        <span style="color: rgba(215, 226, 234, 0.5); font-weight: 300; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.75rem; max-width: 300px;">Experiments, technical builds, and analytical explorations.</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: clamp(14px, 1.6vw, 20px);">
         <sc-for list="{{ labs }}" as="l" hint-placeholder-count="5">
-          <div style="border: 1px solid rgba(215, 226, 234, 0.22); border-radius: 32px; padding: clamp(24px, 2.6vw, 34px); display: flex; flex-direction: column; gap: 12px; min-height: 260px; background: linear-gradient(165deg, rgba(215, 226, 234, 0.06), rgba(215, 226, 234, 0.015));">
+          <article style="border: 1px solid rgba(215, 226, 234, 0.22); border-radius: 32px; padding: clamp(24px, 2.6vw, 34px); display: flex; flex-direction: column; gap: 12px; min-height: 260px; background: linear-gradient(165deg, rgba(215, 226, 234, 0.06), rgba(215, 226, 234, 0.015));">
             <span style="color: #D7E2EA; font-weight: 900; line-height: 0.85; font-size: clamp(2rem, 3.4vw, 3.2rem); opacity: 0.35;">{{ l.num }}</span>
             <span style="color: #2E7FBF; font-weight: 500; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.68rem;">{{ l.tag }}</span>
-            <span style="color: #D7E2EA; font-weight: 500; text-transform: uppercase; line-height: 1.15; font-size: clamp(1.05rem, 1.6vw, 1.5rem);">{{ l.name }}</span>
+            <h3 style="margin: 0; color: #D7E2EA; font-weight: 500; text-transform: uppercase; line-height: 1.15; font-size: clamp(1.05rem, 1.6vw, 1.5rem);">{{ l.name }}</h3>
             <span style="color: rgba(215, 226, 234, 0.68); font-weight: 300; line-height: 1.6; font-size: clamp(0.85rem, 1.15vw, 1rem);">{{ l.text }}</span>
-          </div>
+            <div style="margin-top: auto; padding-top: 14px; border-top: 1px solid rgba(215, 226, 234, 0.12); display: flex; flex-direction: column; gap: 4px;">
+              <span style="color: rgba(215, 226, 234, 0.4); font-weight: 300; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.62rem;">Methods</span>
+              <span style="color: rgba(215, 226, 234, 0.85); font-weight: 400; line-height: 1.5; font-size: clamp(0.78rem, 1vw, 0.9rem);">{{ l.methods }}</span>
+            </div>
+          </article>
         </sc-for>
       </div>
     </div>
@@ -202,11 +283,12 @@
   </section>
 
   <section id="contact" style="border-top-left-radius: clamp(40px, 5vw, 60px); border-top-right-radius: clamp(40px, 5vw, 60px); margin-top: -56px; position: relative; z-index: 10; background: #0C0C0C; padding: clamp(70px, 9vw, 130px) 24px clamp(36px, 4vw, 56px); display: flex; flex-direction: column; align-items: center; gap: clamp(24px, 4vw, 40px); text-align: center;">
-    <h2 style="margin: 0; font-weight: 900; text-transform: uppercase; line-height: 0.88; letter-spacing: -0.03em; font-size: clamp(2.6rem, 11vw, 150px); background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">Let&apos;s talk</h2>
-    <p style="margin: 0; color: #D7E2EA; font-weight: 300; line-height: 1.7; max-width: 560px; font-size: clamp(0.95rem, 1.6vw, 1.2rem);">Looking for internships and summer program opportunities where I can apply this to real projects — and always open to research collaborations and building things with other students.</p>
+    <h2 style="margin: 0; font-weight: 900; text-transform: uppercase; line-height: 0.88; letter-spacing: -0.03em; font-size: clamp(2.4rem, 7.6vw, 116px); max-width: 1100px; background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">Let&apos;s turn data into impact.</h2>
+    <p style="margin: 0; color: #D7E2EA; font-weight: 300; line-height: 1.7; max-width: 640px; font-size: clamp(0.95rem, 1.6vw, 1.2rem);">I&apos;m interested in data science, business analytics, applied machine learning, and research opportunities where I can work with real datasets, investigate meaningful questions, and build tools that support better decisions.</p>
+    <p style="margin: 0; color: rgba(215, 226, 234, 0.6); font-weight: 300; line-height: 1.7; max-width: 640px; font-size: clamp(0.9rem, 1.4vw, 1.05rem);">Open to student research collaborations, mentorship, summer programs, and eligible internship opportunities.</p>
     <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
       <a href="mailto:abhinavallani02@gmail.com" style="border-radius: 999px; padding: 16px 48px; color: #ffffff; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; font-size: clamp(0.75rem, 1.1vw, 1rem); background: linear-gradient(123deg, #14233F 0%, #1B3A6B 30%, #2E7FBF 65%, #4FD1E0 100%); box-shadow: 0px 4px 4px rgba(46, 127, 191, 0.28), 4px 4px 12px #2E7FBF inset; outline: 2px solid #ffffff; outline-offset: -3px;">Email me</a>
-      <a href="uploads/Resume.pdf.pdf" target="_blank" style="border-radius: 999px; border: 2px solid #D7E2EA; color: #D7E2EA; padding: 14px 44px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; font-size: clamp(0.75rem, 1.1vw, 1rem); transition: background 0.2s ease;" style-hover="background: rgba(215, 226, 234, 0.1);">Download résumé</a>
+      <a href="uploads/Resume.pdf.pdf" target="_blank" rel="noopener" style="border-radius: 999px; border: 2px solid #D7E2EA; color: #D7E2EA; padding: 14px 44px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; font-size: clamp(0.75rem, 1.1vw, 1rem); transition: background 0.2s ease;" style-hover="background: rgba(215, 226, 234, 0.1);">Download résumé</a>
     </div>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: clamp(20px, 3vw, 40px); width: min(1000px, 100%); text-align: left; margin-top: clamp(16px, 2vw, 32px);">
       <div style="display: flex; flex-direction: column; gap: 8px;">
@@ -219,11 +301,11 @@
       </div>
       <div style="display: flex; flex-direction: column; gap: 8px;">
         <span style="color: rgba(215, 226, 234, 0.45); font-weight: 300; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.66rem;">LinkedIn</span>
-        <a href="https://linkedin.com/in/abhinav-allani-1a9207389" target="_blank" style="color: #D7E2EA; font-weight: 500; font-size: clamp(0.95rem, 1.3vw, 1.15rem);">abhinav-allani ↗</a>
+        <a href="https://linkedin.com/in/abhinav-allani-1a9207389" target="_blank" rel="noopener" style="color: #D7E2EA; font-weight: 500; font-size: clamp(0.95rem, 1.3vw, 1.15rem);">abhinav-allani ↗</a>
       </div>
       <div style="display: flex; flex-direction: column; gap: 8px;">
-        <span style="color: rgba(215, 226, 234, 0.45); font-weight: 300; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.66rem;">Site</span>
-        <a href="https://choose-and-rise.pages.dev" target="_blank" style="color: #D7E2EA; font-weight: 500; font-size: clamp(0.95rem, 1.3vw, 1.15rem);">choose-and-rise.pages.dev ↗</a>
+        <span style="color: rgba(215, 226, 234, 0.45); font-weight: 300; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.66rem;">Website</span>
+        <a href="https://choose-and-rise.pages.dev" target="_blank" rel="noopener" style="color: #D7E2EA; font-weight: 500; font-size: clamp(0.95rem, 1.3vw, 1.15rem);">choose-and-rise.pages.dev ↗</a>
       </div>
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; padding-top: 24px; border-top: 1px solid rgba(215, 226, 234, 0.15); width: min(900px, 100%); margin-top: 24px; color: rgba(215, 226, 234, 0.5); font-weight: 300; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.7rem;">
@@ -294,34 +376,56 @@ class Component extends DCLogic {
 
   renderVals() {
     const s = this.state;
+    const reduced = typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const shots = [
       "uploads/Choose%20and%20Rise.png",
       "uploads/Silenthelp.png",
       "uploads/Math%20and%20Code.png"
     ];
-    const marqueeTop = ["Python", "JavaScript", "Machine Learning", "HTML & CSS", "Reinforcement Learning", "Generative AI"];
-    const marqueeBottom = ["Cloudflare Pages", "Google Analytics 4", "n8n Automation", "Image Recognition", "Statistics for Data Science", "Project Management", "Leadership"];
+
+    // Verified skills only (résumé + certifications + built projects). Java = AP CS A, in progress.
+    const skills = {
+      programming: ["Python", "JavaScript", "Java (AP CS A, in progress)", "HTML & CSS"],
+      data: ["Statistical Analysis", "Machine Learning", "Image Classification", "Model Evaluation"],
+      ai: ["Generative AI", "AI Automation", "Reinforcement Learning"],
+      tools: ["Cloudflare Pages", "Google Analytics 4", "n8n Automation", "Research", "Project Management", "Leadership"]
+    };
+    const marqueeTop = [...skills.programming.map(x => x.replace(" (AP CS A, in progress)", "")), ...skills.data];
+    const marqueeBottom = [...skills.ai, ...skills.tools];
     const loop = (arr, times) => Array.from({ length: arr.length * times }, (_, i) => ({ name: arr[i % arr.length] }));
 
     const off = (s.scrollY - (s.marqueeTop || 0) + s.vh) * (this.props.marqueeSpeed ?? 0.3);
     const magnetEnabled = this.props.magnetOn ?? true;
-    const shift = Math.max(0, off - 200);
+    const shift = reduced ? 0 : Math.max(0, off - 200);
 
-    const text = "I'm a student at Metea Valley High School in Aurora, Illinois, focused on AI, machine learning and web development. I founded Choose & Rise, co-founded a student mental health initiative, teach math and Python for free, and research AI/ML through the Pulse High School Research Program. I care most about building educational tools that actually reach the students who need them.";
+    const paras = [
+      "I'm a student at Metea Valley High School in Aurora, Illinois, with a growing focus on data science, business analytics, statistics, and applied artificial intelligence.",
+      "I founded Choose & Rise, an educational platform helping students make informed decisions about college and career pathways, and co-founded SilentHelp, a student-focused digital wellness initiative.",
+      "Through these projects, I've gained experience developing data-driven applications, working with real-world information, exploring machine learning, and translating complex problems into practical solutions.",
+      "I'm also involved in AI/ML research through the Pulse High School Research Program and provide free math and Python instruction.",
+      "My long-term goal is to work at the intersection of data science, business strategy, and artificial intelligence, using data to understand problems, identify patterns, and support better decisions."
+    ];
+    const totalLen = paras.reduce((n, t) => n + t.length, 0);
     const start = s.revealTop - s.vh * 0.8;
     const end = s.revealTop + s.revealH - s.vh * 0.2;
-    const prog = Math.min(1, Math.max(0, (s.scrollY - start) / Math.max(1, end - start)));
-    const lit = prog * text.length;
-    const chars = text.split("").map((ch, i) => ({ ch, o: i < lit ? 1 : 0.2 }));
+    const prog = reduced ? 1 : Math.min(1, Math.max(0, (s.scrollY - start) / Math.max(1, end - start)));
+    const lit = prog * totalLen;
+    let offset = 0;
+    const aboutParas = paras.map(text => {
+      const base = offset;
+      offset += text.length;
+      return { text, chars: text.split("").map((ch, i) => ({ ch, o: base + i < lit ? 1 : 0.2 })) };
+    });
 
     const data = [
       {
         category: "Founder & Developer — Jan 2026 — Present",
         name: "Choose & Rise",
         href: "https://choose-and-rise.pages.dev",
-        overview: "A nonprofit educational platform helping high schoolers explore colleges, majors and career pathways — admission odds, vocab practice, a planner, and Nova, an AI study coach. Free for every US student.",
+        overview: "An educational platform integrating college and career information to help students explore academic pathways and make more informed decisions. Free for every US student.",
+        focus: ["Educational data", "Decision support", "College & career analytics", "Data-driven application", "User-focused product"],
         role: "Founder · Developer · Product",
-        stack: "HTML · CSS · JavaScript · Cloudflare Pages · GA4",
+        stack: "HTML · CSS · JavaScript · Cloudflare Pages · Google Analytics 4",
         shot: shots[0]
       },
       {
@@ -329,17 +433,19 @@ class Component extends DCLogic {
         name: "SilentHelp",
         href: "mailto:abhinavallani02@gmail.com?subject=SilentHelp",
         cta: "Ask for a demo",
-        overview: "A student-focused mental health initiative supporting peer wellness. Signals are read on-device and point toward real human support the moment it matters — nothing leaves the machine.",
-        role: "Co-founder · Lead AI/ML Engineer · PM",
-        stack: "Python · NLP · On-device inference · Safety guardrails",
+        overview: "A student-focused digital wellness project exploring how behavioral signals, natural language processing, and trend analysis can support early awareness and access to human support. A prototype and awareness tool — not a clinical or diagnostic system.",
+        focus: ["Behavioral signal analysis", "Natural language processing", "Trend analysis", "Machine learning", "Privacy-aware development"],
+        role: "Co-founder — AI/ML & Product Development",
+        stack: "Python · NLP · Behavioral signals · Trend gating · Safety guardrails",
         shot: shots[1]
       },
       {
-        category: "Founder — instructor, 2025 — Present",
+        category: "Founder & Instructor — 2025 — Present",
         name: "Math & Code Academy",
         href: "https://forms.gle/GBiYeFYXXNasoQRW7",
         cta: "Register",
-        overview: "A free program teaching Pre-Algebra, Algebra 1, Geometry, Algebra 2 and Python from the basics — no cost, no prerequisites. I write the curriculum, teach the sessions, and keep every unit project-first: students finish a topic by building something with it rather than by passing a worksheet. It grew out of tutoring ELL students in math and science at Metea Valley, where the pattern was obvious — the gap is rarely ability, it's access to someone who will explain it a second way. Registration is open to any student who wants in.",
+        overview: "A free mathematics and Python education program focused on practical problem-solving, foundational reasoning, and project-based learning. Courses run from Pre-Algebra through Algebra 2, plus Python from the basics — no cost, no prerequisites.",
+        focus: ["Mathematics", "Python programming", "Curriculum development", "Student mentorship", "Analytical thinking"],
         role: "Founder · Curriculum · Instructor",
         stack: "Python · Curriculum design · Teaching",
         shot: shots[2]
@@ -351,7 +457,7 @@ class Component extends DCLogic {
       const top = s.cards[i] || 0;
       const next = s.cards[i + 1];
       let scale = 1;
-      if (next) {
+      if (next && !reduced) {
         const t = Math.min(1, Math.max(0, (s.scrollY - (top - 120)) / Math.max(1, next - top)));
         const target = 1 - (total - 1 - i) * 0.03;
         scale = 1 + (target - 1) * t;
@@ -360,20 +466,53 @@ class Component extends DCLogic {
         ...p,
         num: "0" + (i + 1),
         cta: p.cta || "Live project",
+        alt: "Screenshot of " + p.name,
+        focus: p.focus.map(name => ({ name })),
         top: 96 + i * 28 + "px",
         scale: scale.toFixed(4)
       };
     });
 
+    // Completed Data Lab builds. Work in progress lives in `buildingData` below.
+    const lab = [
+      { name: "CivicReports", tag: "Mobile app · Civic data", status: "done", text: "A mobile app for reporting local civic issues, with real-time submission and status tracking — structuring messy, location-based community reports into records that can be followed up.", methods: "Structured data capture · Workflow design · Issue tracking" },
+      { name: "Personal Diet Tracker", tag: "Applied AI · Health", status: "done", text: "Photo-based meal analysis: image recognition estimates calories and a dietary breakdown from a single picture, turning an unstructured photo into nutrition data.", methods: "Image recognition · Estimation workflow" },
+      { name: "Plant Disease Detector", tag: "Machine learning · AgriTech", status: "done", text: "A machine learning model that classifies plant leaf diseases from uploaded images, making a first diagnosis step available without a specialist.", methods: "Image classification · Supervised learning" },
+      { name: "Vision Guide", tag: "Accessibility", status: "done", text: "A high-contrast scan-to-read assistant for visually impaired users, with text enhancement and a readability-first interface.", methods: "Image processing · Text enhancement · Accessible UI" },
+      { name: "Social Media Automation", tag: "AI pipeline", status: "done", text: "An end-to-end pipeline built with n8n and NVIDIA Nemotron models that generates content and schedules posts automatically.", methods: "Generative AI · Workflow automation (n8n)" }
+    ];
+    const done = lab.filter(l => l.status === "done");
+
+    // Currently Building. Status is "In Development" or "Planned" — nothing here is finished;
+    // move an entry into `lab` once it is.
+    const buildingData = [
+      { name: "MetricFlow", status: "In Development", category: "Retail Analytics · Business Intelligence", text: "Developing a retail analytics platform to explore sales trends, product performance, and customer purchasing patterns using historical transaction data.", tech: ["Python", "SQL", "React", "FastAPI", "Pandas"] },
+      { name: "College Outcomes Analysis", status: "Planned", category: "Education Data · Statistical Analysis", text: "Planning an analysis of public college datasets to explore tuition, graduation rates, and student outcomes.", tech: ["Python", "Pandas", "Statistics", "Data Visualization"] },
+      { name: "Predictive Analytics Lab", status: "Planned", category: "Machine Learning · Model Evaluation", text: "Planning a machine learning study focused on comparing predictive models, measuring errors, and understanding their limitations.", tech: ["Python", "Scikit-learn", "Statistics"] }
+    ];
+    const building = buildingData.map((b, i) => {
+      const active = b.status === "In Development";
+      return {
+        ...b,
+        num: "0" + (i + 1),
+        tech: b.tech.map(name => ({ name })),
+        pillColor: active ? "#4FD1E0" : "rgba(215, 226, 234, 0.6)",
+        pillBorder: active ? "rgba(79, 209, 224, 0.45)" : "rgba(215, 226, 234, 0.25)",
+        dotFill: active ? "#4FD1E0" : "transparent",
+        dotBorder: active ? "#4FD1E0" : "rgba(215, 226, 234, 0.6)",
+        dotAnim: active ? "statusPulse 2.4s ease-in-out infinite" : "none"
+      };
+    });
+
     return {
-      row1: loop(marqueeTop, 4),
-      row2: loop(marqueeBottom, 4),
+      row1: loop(marqueeTop, 3),
+      row2: loop(marqueeBottom, 3),
       row1x: shift + "px",
       row2x: -shift + "px",
       magX: (magnetEnabled ? s.mx : 0).toFixed(1) + "px",
       magY: (magnetEnabled ? s.my : 0).toFixed(1) + "px",
       magT: s.magnetOn ? "transform 0.3s ease-out" : "transform 0.6s ease-in-out",
-      chars,
+      aboutParas,
       projects,
       facts: [
         { k: "School", v: "Metea Valley HS — Aurora, IL" },
@@ -382,21 +521,16 @@ class Component extends DCLogic {
         { k: "In progress", v: "AP Computer Science A" }
       ],
       skillGroups: [
-        { label: "Programming", items: "Python · JavaScript", dur: "6.5s", delay: "0s" },
-        { label: "Web development", items: "HTML · CSS · responsive site builds · Cloudflare Pages", dur: "7.5s", delay: "0.6s" },
-        { label: "Tools & analytics", items: "Google Analytics 4 · n8n · NVIDIA Nemotron · modern web tooling", dur: "7s", delay: "1.2s" },
-        { label: "Soft skills", items: "Problem-solving · project management · leadership · collaboration · communication", dur: "8s", delay: "1.8s" }
+        { label: "Programming", items: skills.programming.map(name => ({ name })), dur: "6.5s", delay: "0s" },
+        { label: "Data science & statistics", items: skills.data.map(name => ({ name })), dur: "7.5s", delay: "0.6s" },
+        { label: "Analytics & artificial intelligence", items: skills.ai.map(name => ({ name })), dur: "7s", delay: "1.2s" },
+        { label: "Tools & leadership", items: skills.tools.map(name => ({ name })), dur: "8s", delay: "1.8s" }
       ],
-      labs: [
-        { num: "01", name: "CivicReports", tag: "Mobile app", text: "Reporting local civic issues with real-time submission and tracking, built around a workflow simple enough for anyone in the neighborhood to use." },
-        { num: "02", name: "Personal Diet Tracker", tag: "AI health", text: "Photo-based meal analysis — image recognition estimates calories and dietary breakdown from a single picture." },
-        { num: "03", name: "Plant Disease Detector", tag: "ML / AgriTech", text: "A classifier that identifies leaf diseases from uploaded images, making a diagnosis step available without a specialist." },
-        { num: "04", name: "Vision Guide", tag: "Accessibility", text: "High-contrast scan-to-read assistant for visually impaired users, with text enhancement and a readability-first interface." },
-        { num: "05", name: "Social Media Automation", tag: "AI pipeline", text: "An n8n and NVIDIA Nemotron pipeline that generates and schedules content end to end." }
-      ],
+      labs: done.map((l, i) => ({ ...l, num: "0" + (i + 1) })),
+      building,
       experience: [
-        { num: "01", role: "High School Researcher — Pulse Research Program", period: "2026 — Present", text: "AI/ML research under mentor guidance: developing and evaluating models for real-world applications, and contributing to experiments, documentation and presentations." },
-        { num: "02", role: "ELL Math & Science Tutor — Metea Valley HS", period: "2025 — Present", text: "Tutoring English Language Learner students in math and science — homework explanation and concept clarification. ELL Tutoring Certification earned." },
+        { num: "01", role: "High School Researcher — Pulse Research Program", period: "2026 — Present", text: "Exploring AI/ML through mentor-guided research, technical experiments, model evaluation, documentation, and presentations." },
+        { num: "02", role: "ELL Math & Science Tutor — Metea Valley HS", period: "2025 — Present", text: "Providing mathematics and science tutoring to English Language Learner students, focusing on concept clarification, problem-solving, and accessible explanations. ELL Tutoring Certification earned." },
         { num: "03", role: "Community Volunteer", period: "2025 — Present", text: "School and community service initiatives, 8+ hours completed and ongoing." }
       ],
       certs: [
@@ -405,7 +539,7 @@ class Component extends DCLogic {
         { name: "Python Statistics for Data Science — Grade A" },
         { name: "Generative AI Industry Applications" },
         { name: "ELL Tutoring Certification" },
-        { name: "Student Government Participation" }
+        { name: "Student Government Participation Certificate" }
       ],
       activities: [
         { name: "Student Government" },
@@ -414,11 +548,11 @@ class Component extends DCLogic {
         { name: "Cricket Club" }
       ],
       services: [
-        { num: "01", name: "Machine learning", text: "Building and evaluating models — image classification, recognition pipelines — with the statistics to know when a result is real and not noise." },
-        { num: "02", name: "AI automation", text: "Agent and automation pipelines with n8n and open models, built so failure modes show up early instead of silently." },
-        { num: "03", name: "Web development", text: "Taking an idea to a live site people can open: HTML, CSS, JavaScript, deployed on Cloudflare Pages with analytics wired in." },
-        { num: "04", name: "Reinforcement learning", text: "Coursework and research in RL — reward shaping, evaluation, and the stability problems that show up across training runs." },
-        { num: "05", name: "Teaching", text: "Free math and Python instruction, plus ELL tutoring in math and science at school — built around problems rather than lectures." }
+        { num: "01", name: "Data science & statistical analysis", text: "Exploring datasets, identifying meaningful patterns, and applying statistical reasoning to evaluate results and understand uncertainty." },
+        { num: "02", name: "Business analytics & decision-making", text: "Interested in translating data into practical recommendations, measuring outcomes, and understanding how organizations make evidence-based decisions." },
+        { num: "03", name: "Machine learning & predictive modeling", text: "Building and evaluating machine learning systems, including image classification and recognition applications, with attention to model performance and reliability." },
+        { num: "04", name: "Data-driven product development", text: "Creating web applications that turn complex information into accessible tools, combining data sources, software development, and user-focused design." },
+        { num: "05", name: "Research & education", text: "Exploring AI/ML through mentored research while teaching mathematics, Python, and foundational problem-solving skills." }
       ]
     };
   }

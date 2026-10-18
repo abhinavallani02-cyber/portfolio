@@ -1,6 +1,6 @@
 # Portfolio — Abhinav Allani
 
-Single-file portfolio landing page. AI/ML & web development.
+Single-file portfolio landing page. Data science, business analytics & applied AI.
 
 - **Stack:** vanilla HTML/CSS/JS, no build step, no dependencies (Kanit via Google Fonts is the only external request).
 - **Deploy:** Cloudflare Pages. Build command: *(none)*. Output directory: `/` (repo root).
