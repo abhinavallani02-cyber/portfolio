@@ -44,6 +44,10 @@
     [data-card] { transform: none !important; }
     [data-card-wrap] { height: auto !important; min-height: 0 !important; position: relative !important; top: 0 !important; margin-bottom: 20px; }
   }
+  @media (max-width: 380px) {
+    [data-nav] { padding: 18px 12px 0 !important; gap: 6px !important; }
+    [data-nav] a { font-size: 0.66rem !important; letter-spacing: 0 !important; }
+  }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   }
@@ -59,7 +63,7 @@
       <a href="#skills" style="color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; font-size: clamp(0.875rem, 1.6vw, 1.4rem); transition: opacity 0.2s ease;" style-hover="opacity: 0.7;">What I do</a>
       <a href="#projects" style="color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; font-size: clamp(0.875rem, 1.6vw, 1.4rem); transition: opacity 0.2s ease;" style-hover="opacity: 0.7;">Projects</a>
       <a href="#lab" style="color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; font-size: clamp(0.875rem, 1.6vw, 1.4rem); transition: opacity 0.2s ease;" style-hover="opacity: 0.7;">Data Lab</a>
-      <a href="#contact" style="color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; font-size: clamp(0.875rem, 1.6vw, 1.4rem); transition: opacity 0.2s ease;" style-hover="opacity: 0.7;">Contact</a>
+      <a href="#contact" style="color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; font-size: clamp(0.875rem, 1.6vw, 1.4rem); transition: opacity 0.2s ease;" style-hover="opacity: 0.7;">Contact Me</a>
     </nav>
 
     <div style="overflow: hidden; width: 100%; margin-top: 6px;">
@@ -186,7 +190,7 @@
                   <span style="color: #ffffff; opacity: 0.85; font-weight: 300; line-height: 1.5; font-size: clamp(0.8rem, 1.1vw, 0.95rem);">{{ p.stack }}</span>
                 </div>
               </div>
-              <img data-card-shot="" src="{{ p.shot }}" alt="{{ p.alt }}" loading="lazy" style="width: 100%; height: clamp(320px, 46vh, 560px); object-fit: cover; object-position: top center; border-radius: clamp(40px, 5vw, 60px); background: #17171a; border: 1px solid rgba(215, 226, 234, 0.25);" />
+              <img data-card-shot="" src="{{ p.shot }}" alt="{{ p.alt }}" loading="lazy" style="width: 100%; height: clamp(320px, 46vh, 560px); object-fit: cover; object-position: {{ p.pos }}; border-radius: clamp(40px, 5vw, 60px); background: #17171a; border: 1px solid rgba(215, 226, 234, 0.25);" />
             </div>
           </div>
         </div>
@@ -379,8 +383,8 @@ class Component extends DCLogic {
     const reduced = typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const shots = [
       "uploads/Choose%20and%20Rise.png",
-      "uploads/Silenthelp.png",
-      "uploads/Math%20and%20Code.png"
+      "uploads/silenthelp-hero.jpg",
+      "uploads/math-and-code.jpg"
     ];
 
     // Verified skills only (résumé + certifications + built projects). Java = AP CS A, in progress.
@@ -448,7 +452,8 @@ class Component extends DCLogic {
         focus: ["Mathematics", "Python programming", "Curriculum development", "Student mentorship", "Analytical thinking"],
         role: "Founder · Curriculum · Instructor",
         stack: "Python · Curriculum design · Teaching",
-        shot: shots[2]
+        shot: shots[2],
+        pos: "center"
       }
     ];
 
@@ -466,6 +471,7 @@ class Component extends DCLogic {
         ...p,
         num: "0" + (i + 1),
         cta: p.cta || "Live project",
+        pos: p.pos || "top center",
         alt: "Screenshot of " + p.name,
         focus: p.focus.map(name => ({ name })),
         top: 96 + i * 28 + "px",
@@ -517,7 +523,7 @@ class Component extends DCLogic {
       facts: [
         { k: "School", v: "Metea Valley HS — Aurora, IL" },
         { k: "Class of", v: "2028" },
-        { k: "GPA", v: "3.8 weighted / 3.7 unweighted" },
+        { k: "GPA", v: "3.7 weighted / 3.6 unweighted" },
         { k: "In progress", v: "AP Computer Science A" }
       ],
       skillGroups: [
@@ -545,7 +551,10 @@ class Component extends DCLogic {
         { name: "Student Government" },
         { name: "STEM Talks" },
         { name: "Computer Club" },
-        { name: "Cricket Club" }
+        { name: "Cricket Club" },
+        { name: "Key Club" },
+        { name: "UNICEF Club" },
+        { name: "CS Club" }
       ],
       services: [
         { num: "01", name: "Data science & statistical analysis", text: "Exploring datasets, identifying meaningful patterns, and applying statistical reasoning to evaluate results and understand uncertainty." },
