@@ -171,7 +171,9 @@
                 <span style="color: #D7E2EA; opacity: 0.55; font-weight: 300; text-transform: uppercase; letter-spacing: 0.18em; font-size: clamp(0.7rem, 1vw, 0.9rem);">{{ p.category }}</span>
                 <span style="color: #D7E2EA; font-weight: 500; text-transform: uppercase; line-height: 1.1; font-size: clamp(1.1rem, 2.4vw, 2.1rem);">{{ p.name }}</span>
               </div>
-              <a href="{{ p.href }}" target="_blank" rel="noopener" style="flex: none; border-radius: 999px; border: 2px solid #D7E2EA; color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; padding: 14px 40px; font-size: clamp(0.8rem, 1.1vw, 1rem); transition: background 0.2s ease;" style-hover="background: rgba(215, 226, 234, 0.1);">{{ p.cta }}</a>
+              <sc-if value="{{ p.href }}">
+                <a href="{{ p.href }}" target="_blank" rel="noopener" style="flex: none; border-radius: 999px; border: 2px solid #D7E2EA; color: #D7E2EA; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; padding: 14px 40px; font-size: clamp(0.8rem, 1.1vw, 1rem); transition: background 0.2s ease;" style-hover="background: rgba(215, 226, 234, 0.1);">{{ p.cta }}</a>
+              </sc-if>
             </div>
             <div data-card-grid="" style="display: grid; grid-template-columns: 38% 62%; gap: clamp(10px, 1.4vw, 18px); align-items: stretch;">
               <div style="display: flex; flex-direction: column; gap: clamp(10px, 1.4vw, 18px);">
@@ -444,11 +446,9 @@ class Component extends DCLogic {
         shot: shots[1]
       },
       {
-        category: "Founder & Instructor — 2025 — Present",
+        category: "Founder & Instructor — 2025 · Past project",
         name: "Math & Code Academy",
-        href: "https://forms.gle/GBiYeFYXXNasoQRW7",
-        cta: "Register",
-        overview: "A free mathematics and Python education program focused on practical problem-solving, foundational reasoning, and project-based learning. Courses run from Pre-Algebra through Algebra 2, plus Python from the basics — no cost, no prerequisites.",
+        overview: "A free mathematics and Python education program I ran, focused on practical problem-solving, foundational reasoning, and project-based learning. Courses covered Pre-Algebra through Algebra 2, plus Python from the basics — no cost, no prerequisites.",
         focus: ["Mathematics", "Python programming", "Curriculum development", "Student mentorship", "Analytical thinking"],
         role: "Founder · Curriculum · Instructor",
         stack: "Python · Curriculum design · Teaching",
